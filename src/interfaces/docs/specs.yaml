@@ -1,0 +1,131 @@
+openapi: 3.0.2
+info:
+  title: User Management API
+  description: API for managing users
+  version: 1.0.0
+
+components:
+  schemas:
+    User:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: 2ZqHs@example.com
+        password:
+          type: string
+          example: password123
+        name:
+          type: string
+          example: Robert
+        surname:
+          type: string
+          example: Hernández
+        address:
+          type: string
+          example: 123 Main Street
+        avatar:
+          type: string
+          example: https://example.com/avatar.jpg
+        birthdate:
+          type: string
+          format: date-time
+          example: 1990-01-01T00:00:00.000Z
+        city:
+          type: string
+          example: A Coruña
+        country:
+          type: string
+          example: Spain
+        dni:
+          type: string
+          example: 12345678Z
+        gender:
+          type: string
+          example: male
+        isActive:
+          type: boolean
+          example: true
+        phone:
+          type: string
+          example: 555-555-5555
+        role:
+          type: string
+          example: user
+        token:
+          type: string
+          example: token123
+        zipcode:
+          type: string
+
+paths:
+  /users:
+    post:
+      summary: Create a new user
+      tags: [Users]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        201:
+          description: User created
+
+  /users/{id}:
+    get:
+      summary: Get a user by id
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: The user id
+      responses:
+        200:
+          description: The user description by id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        404:
+          description: The user was not found
+
+    put:
+      summary: Update a user
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        200:
+          description: User updated
+
+    delete:
+      summary: Delete a user
+      tags: [Users]
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        204:
+          description: User deleted
