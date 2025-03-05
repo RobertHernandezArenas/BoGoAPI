@@ -13,29 +13,25 @@ router
 
 	/**
 	 * @swagger
-	 * components:
-	 *   schemas:
-	 *     User:
-	 *       type: object
-	 *       required:
-	 *         - name
-	 *       properties:
-	 *         id:
-	 *           type: integer
-	 *           description: The auto-generated id of the
-	 *         name:
-	 *           type: string
-	 *           description: The name of the Jedi
-	 *       example:
-	 *         id: 1
-	 *         name: Luke Skywalker
-	 */
-
-	/**
-	 * @swagger
-	 * tags:
-	 *   name: Users
-	 *   description: The users managing API
+	 * /jedis:
+	 *   post:
+	 *     summary: Create a new Jedi
+	 *     tags: [Jedis]
+	 *     requestBody:
+	 *       required: true
+	 *       content:
+	 *         application/json:
+	 *           schema:
+	 *             $ref: '#/components/schemas/Jedi'
+	 *     responses:
+	 *       201:
+	 *         description: The Jedi was successfully created
+	 *         content:
+	 *           application/json:
+	 *             schema:
+	 *               $ref: '#/components/schemas/Jedi'
+	 *       500:
+	 *         description: Some server error
 	 */
 	.post('/users', UserValidator.validateUser, UserController.create)
 

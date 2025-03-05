@@ -1,22 +1,23 @@
 class ExperienceRepository {
 	async create(experienceEntity) {
-		throw new Error('Method not implemented');
+		//
 	}
 
 	async findAll() {
-		throw new Error('Method not implemented');
+		console.log("Hola mundo desde el repositorio");
+		//
 	}
 
 	async findById(id) {
-		throw new Error('Method not implemented');
+		//
 	}
 
 	async update(id, experienceEntity) {
-		throw new Error('Method not implemented');
+		//
 	}
 
 	async delete(id) {
-		throw new Error('Method not implemented');
+		//
 	}
 }
 

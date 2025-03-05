@@ -15,7 +15,7 @@ router.post(
 	ExperienceController.create
 );
 
-router.get('/experiences', authMiddleware, ExperienceController.getAll);
+router.get('/experiences', /* authMiddleware, */ ExperienceController.getAll);
 
 router.get('/experiences/:id', authMiddleware, ExperienceController.getById);
 

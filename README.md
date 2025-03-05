@@ -1,3 +1,4 @@
+```
 src/
 │
 ├── config/                  # Configuraciones globales
@@ -45,3 +46,4 @@ src/
 │
 ├── app.js                   # Punto de entrada de la aplicación
 └── server.js                # Configuración del servidor
+```

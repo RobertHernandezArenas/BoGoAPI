@@ -34,7 +34,7 @@ app
 	.use(express.static(publicFolder))
 	.use('/api/v1/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDOC))
 	.use('/api/v1', userRoutes)
-	.use('/experiences', experienceRoutes)
+	.use('/api/v1', experienceRoutes)
 	.use(errorHandler)
 	.listen(PORT, () => {
 		try {

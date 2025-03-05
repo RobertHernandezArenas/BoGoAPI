@@ -27,7 +27,7 @@ const swaggerDefinitions = {
 			}
 		],
 	},
-	apis: ['./specs.yaml']
+	apis: ['./specs_.yml']
 };
 
 const swaggerDOC = swaggerJsDoc(swaggerDefinitions);
