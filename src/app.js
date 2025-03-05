@@ -10,14 +10,18 @@ const swaggerDOC = require('./interfaces/docs/swagger');
 const userRoutes = require('./interfaces/routes/UserRoutes');
 const experienceRoutes = require('./interfaces/routes/ExperienceRoutes');
 const errorHandler = require('./interfaces/middlewares/errorHandler');
-const { sequelize } = require('./config/database/MYSQL/sequelize');
+const { sequelize } = require('./config/database/mysql/sequelize');
 const fillDB = require('./config/database/mysql/dbScript');
 const config = require('./config');
+const { hostname } = require('os');
 
 const app = express();
 const PORT = config.envs.PORT;
 const DATABASE_NAME = config.envs.DATABASE_NAME;
 const publicFolder = path.join(__dirname, 'public');
+const host = path.join(__dirname, 'config');
+
+console.log(publicFolder, host);
 
 app
 	.use(morgan('dev'))

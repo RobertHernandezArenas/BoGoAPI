@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../../config/database/MYSQL/sequelize');
+const sequelize = require('../../config/database/mysql/sequelize');
 const config = require('../../config');
 
 const DEFAULT_ROLE = 'USER';
