@@ -23,9 +23,15 @@ class ExperienceController {
 			const experienceDTOs = experiences.map(
 				(experience) => new ExperienceDTO(experience)
 			);
-			res.status(200).json(experienceDTOs);
+			res.status(200).json({
+				error: false,
+				data: experienceDTOs
+			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			res.status(500).json({
+				error: error.message,
+				data: false
+			});
 		}
 	}
 

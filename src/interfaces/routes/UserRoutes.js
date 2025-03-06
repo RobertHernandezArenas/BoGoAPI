@@ -4,15 +4,12 @@ const express = require('express');
 const UserController = require('../controllers/UserController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
-const UserValidator = require('../middlewares/validators/userValidator');
+const UserValidator = require('../middlewares/validators/UserValidator');
 
 const router = express.Router();
 
-
-router
-
-	/**
-	 * @swagger
+/**
+	 * @openapi
 	 * /jedis:
 	 *   post:
 	 *     summary: Create a new Jedi
@@ -33,6 +30,7 @@ router
 	 *       500:
 	 *         description: Some server error
 	 */
+router
 	.post('/users', UserValidator.validateUser, UserController.create)
 
 	.get('/users/:id', authMiddleware, UserController.getById)
