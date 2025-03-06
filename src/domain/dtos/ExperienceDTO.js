@@ -11,9 +11,10 @@ class ExperienceDTO {
 		capacity,
 		stock,
 		availability,
-		category,
+		category_id,
 		image,
 		user_id,
+		isFavorite,
 		createdAt,
 		updatedAt
 	}) {
@@ -28,9 +29,10 @@ class ExperienceDTO {
 		this.capacity = capacity;
 		this.stock = stock;
 		this.availability = availability;
-		this.category = category;
+		this.category_id = category_id;
 		this.image = image;
 		this.user_id = user_id;
+		this.isFavorite = isFavorite;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
 	}

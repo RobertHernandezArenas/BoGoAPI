@@ -1,8 +1,8 @@
 const ExperienceDTO = require('../../domain/dtos/ExperienceDTO');
 const ExperienceService = require('../../domain/services/ExperienceService');
-const ExperienceRepositorySequelize = require('../../infrastructure/repositories/ExperienceRepositorySequelize');
+const ExperienceRepositoryImpl = require('../../infrastructure/repositories/ExperienceRepositoryImpl');
 
-const experienceRepository = new ExperienceRepositorySequelize();
+const experienceRepository = new ExperienceRepositoryImpl();
 const experienceService = new ExperienceService(experienceRepository);
 
 class ExperienceController {
@@ -11,9 +11,12 @@ class ExperienceController {
 			const experienceDTO = new ExperienceDTO(req.body);
 			const experience =
 				await experienceService.createExperience(experienceDTO);
-			res.status(201).json(experience);
+			res.status(201).json({
+				error: false,
+				data: experience
+			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			res.status(500).json({ error: error.message, data: false });
 		}
 	}
 
@@ -43,9 +46,12 @@ class ExperienceController {
 			if (!experience)
 				return res.status(404).json({ error: 'Experience not found' });
 			const experienceDTO = new ExperienceDTO(experience);
-			res.status(200).json(experienceDTO);
+			res.status(200).json({
+				error: false,
+				data: experienceDTO
+			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			res.status(500).json({ error: error.message, data: false });
 		}
 	}
 
@@ -56,9 +62,12 @@ class ExperienceController {
 				req.params.id,
 				experienceDTO
 			);
-			res.status(200).json(experience);
+			res.status(200).json({
+				error: false,
+				data: experience
+			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			res.status(500).json({ error: error.message, data: false });
 		}
 	}
 
@@ -67,7 +76,7 @@ class ExperienceController {
 			await experienceService.deleteExperience(req.params.id);
 			res.status(204).send();
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			res.status(500).json({ error: error.message, data: false });
 		}
 	}
 }

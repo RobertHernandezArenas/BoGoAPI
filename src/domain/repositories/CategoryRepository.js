@@ -1,4 +1,4 @@
-class ExperienceRepository {
+class CategoryRepository {
 	async create(experienceEntity) {
 		//
 	}
@@ -20,4 +20,4 @@ class ExperienceRepository {
 	}
 }
 
-module.exports = ExperienceRepository;
+module.exports = CategoryRepository;

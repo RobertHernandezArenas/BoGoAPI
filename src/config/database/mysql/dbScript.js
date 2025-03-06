@@ -1,6 +1,9 @@
+const path = require('path');
+const CategoryModel = require('../../../infrastructure/models/CategoryModel');
 const ExperienceModel = require('../../../infrastructure/models/ExperienceModel');
 const UserModel = require('../../../infrastructure/models/UserModel');
-const Utils = require('../../../utils');
+const { pluguinAdapters } = require('../../../utils/plugins');
+const { envs } = require('../../envs');
 
 async function fillDB() {
 	await UserModel.sync({ alter: true });
@@ -11,7 +14,7 @@ async function fillDB() {
 		{
 			id: 'user_1',
 			email: 'user1@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Carlos',
 			surname: 'García',
 			address: 'Calle Falsa 123',
@@ -32,7 +35,7 @@ async function fillDB() {
 		{
 			id: 'user_2',
 			email: 'user2@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Laura',
 			surname: 'Martínez',
 			address: 'Plaza Mayor 45',
@@ -53,7 +56,7 @@ async function fillDB() {
 		{
 			id: 'user_3',
 			email: 'user3@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Javier',
 			surname: 'López',
 			address: 'Avenida del Sol 78',
@@ -74,7 +77,7 @@ async function fillDB() {
 		{
 			id: 'user_4',
 			email: 'user4@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Sofía',
 			surname: 'Pérez',
 			address: 'Calle Luna 34',
@@ -95,7 +98,7 @@ async function fillDB() {
 		{
 			id: 'user_5',
 			email: 'user5@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Miguel',
 			surname: 'Rodríguez',
 			address: 'Calle Estrella 56',
@@ -116,7 +119,7 @@ async function fillDB() {
 		{
 			id: 'user_6',
 			email: 'user6@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Lucía',
 			surname: 'Hernández',
 			address: 'Calle Norte 89',
@@ -137,7 +140,7 @@ async function fillDB() {
 		{
 			id: 'user_7',
 			email: 'user7@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Diego',
 			surname: 'Sánchez',
 			address: 'Calle Sur 23',
@@ -158,7 +161,7 @@ async function fillDB() {
 		{
 			id: 'user_8',
 			email: 'user8@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'María',
 			surname: 'Gómez',
 			address: 'Calle Este 67',
@@ -179,7 +182,7 @@ async function fillDB() {
 		{
 			id: 'user_9',
 			email: 'user9@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Pedro',
 			surname: 'Fernández',
 			address: 'Calle Oeste 45',
@@ -200,7 +203,7 @@ async function fillDB() {
 		{
 			id: 'user_10',
 			email: 'user10@example.com',
-			password: 'password123',
+			password: pluguinAdapters.encrypt('password123', 10),
 			name: 'Isabel',
 			surname: 'Ruiz',
 			address: 'Calle Central 90',
@@ -219,438 +222,438 @@ async function fillDB() {
 			updatedAt: null
 		},
 		{
-        id: "user_1",
-        email: "user1@example.com",
-        password: "password123",
-        name: "Carlos",
-        surname: "García",
-        address: "Calle Falsa 123",
-        avatar: "avatar-1.png",
-        birthdate: "1990-05-15",
-        city: "Madrid",
-        country: "España",
-        dni: "12345678A",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777888",
-        role: "USER",
-        token: "token12345",
-        zipcode: "28001",
-        createdAt: "2023-01-01T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_2",
-        email: "user2@example.com",
-        password: "password123",
-        name: "Laura",
-        surname: "Martínez",
-        address: "Plaza Mayor 45",
-        avatar: "avatar-2.png",
-        birthdate: "1985-08-20",
-        city: "Barcelona",
-        country: "España",
-        dni: "23456789B",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777999",
-        role: "USER",
-        token: "token12346",
-        zipcode: "08002",
-        createdAt: "2023-01-02T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_3",
-        email: "user3@example.com",
-        password: "password123",
-        name: "Javier",
-        surname: "López",
-        address: "Avenida del Sol 78",
-        avatar: "avatar-3.png",
-        birthdate: "1992-03-10",
-        city: "Valencia",
-        country: "España",
-        dni: "34567890C",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777111",
-        role: "USER",
-        token: "token12347",
-        zipcode: "46001",
-        createdAt: "2023-01-03T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_4",
-        email: "user4@example.com",
-        password: "password123",
-        name: "Sofía",
-        surname: "Pérez",
-        address: "Calle Luna 34",
-        avatar: "avatar-4.png",
-        birthdate: "1988-11-25",
-        city: "Sevilla",
-        country: "España",
-        dni: "45678901D",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777222",
-        role: "USER",
-        token: "token12348",
-        zipcode: "41001",
-        createdAt: "2023-01-04T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_5",
-        email: "user5@example.com",
-        password: "password123",
-        name: "Miguel",
-        surname: "Rodríguez",
-        address: "Calle Estrella 56",
-        avatar: "avatar-5.png",
-        birthdate: "1995-07-03",
-        city: "Bilbao",
-        country: "España",
-        dni: "56789012E",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777333",
-        role: "USER",
-        token: "token12349",
-        zipcode: "48001",
-        createdAt: "2023-01-05T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_6",
-        email: "user6@example.com",
-        password: "password123",
-        name: "Lucía",
-        surname: "Hernández",
-        address: "Calle Norte 89",
-        avatar: "avatar-6.png",
-        birthdate: "1993-09-12",
-        city: "Málaga",
-        country: "España",
-        dni: "67890123F",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777444",
-        role: "USER",
-        token: "token12350",
-        zipcode: "29001",
-        createdAt: "2023-01-06T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_7",
-        email: "user7@example.com",
-        password: "password123",
-        name: "Diego",
-        surname: "Sánchez",
-        address: "Calle Sur 23",
-        avatar: "avatar-7.png",
-        birthdate: "1987-04-18",
-        city: "Zaragoza",
-        country: "España",
-        dni: "78901234G",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777555",
-        role: "USER",
-        token: "token12351",
-        zipcode: "50001",
-        createdAt: "2023-01-07T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_8",
-        email: "user8@example.com",
-        password: "password123",
-        name: "María",
-        surname: "Gómez",
-        address: "Calle Este 67",
-        avatar: "avatar-8.png",
-        birthdate: "1991-02-22",
-        city: "Granada",
-        country: "España",
-        dni: "89012345H",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777666",
-        role: "USER",
-        token: "token12352",
-        zipcode: "18001",
-        createdAt: "2023-01-08T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_9",
-        email: "user9@example.com",
-        password: "password123",
-        name: "Pedro",
-        surname: "Fernández",
-        address: "Calle Oeste 45",
-        avatar: "avatar-9.png",
-        birthdate: "1986-12-05",
-        city: "Alicante",
-        country: "España",
-        dni: "90123456I",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777777",
-        role: "USER",
-        token: "token12353",
-        zipcode: "03001",
-        createdAt: "2023-01-09T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_10",
-        email: "user10@example.com",
-        password: "password123",
-        name: "Isabel",
-        surname: "Ruiz",
-        address: "Calle Central 90",
-        avatar: "avatar-10.png",
-        birthdate: "1994-06-30",
-        city: "Murcia",
-        country: "España",
-        dni: "01234567J",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777888",
-        role: "USER",
-        token: "token12354",
-        zipcode: "30001",
-        createdAt: "2023-01-10T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_11",
-        email: "user11@example.com",
-        password: "password123",
-        name: "Andrés",
-        surname: "Torres",
-        address: "Calle Pilar 12",
-        avatar: "avatar-11.png",
-        birthdate: "1989-01-10",
-        city: "Palma de Mallorca",
-        country: "España",
-        dni: "12345678K",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777999",
-        role: "USER",
-        token: "token12355",
-        zipcode: "07001",
-        createdAt: "2023-01-11T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_12",
-        email: "user12@example.com",
-        password: "password123",
-        name: "Clara",
-        surname: "Vázquez",
-        address: "Calle Marina 34",
-        avatar: "avatar-12.png",
-        birthdate: "1996-05-22",
-        city: "Las Palmas",
-        country: "España",
-        dni: "23456789L",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777000",
-        role: "USER",
-        token: "token12356",
-        zipcode: "35001",
-        createdAt: "2023-01-12T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_13",
-        email: "user13@example.com",
-        password: "password123",
-        name: "David",
-        surname: "Jiménez",
-        address: "Calle Sierra 56",
-        avatar: "avatar-13.png",
-        birthdate: "1984-08-15",
-        city: "Santa Cruz de Tenerife",
-        country: "España",
-        dni: "34567890M",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777111",
-        role: "USER",
-        token: "token12357",
-        zipcode: "38001",
-        createdAt: "2023-01-13T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_14",
-        email: "user14@example.com",
-        password: "password123",
-        name: "Paula",
-        surname: "Ramírez",
-        address: "Calle Mar 78",
-        avatar: "avatar-14.png",
-        birthdate: "1998-03-05",
-        city: "Valladolid",
-        country: "España",
-        dni: "45678901N",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777222",
-        role: "USER",
-        token: "token12358",
-        zipcode: "47001",
-        createdAt: "2023-01-14T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_15",
-        email: "user15@example.com",
-        password: "password123",
-        name: "Álvaro",
-        surname: "Gutiérrez",
-        address: "Calle Valle 90",
-        avatar: "avatar-15.png",
-        birthdate: "1983-11-28",
-        city: "Santiago de Compostela",
-        country: "España",
-        dni: "56789012O",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777333",
-        role: "USER",
-        token: "token12359",
-        zipcode: "15001",
-        createdAt: "2023-01-15T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_16",
-        email: "user16@example.com",
-        password: "password123",
-        name: "Elena",
-        surname: "Blanco",
-        address: "Calle Río 45",
-        avatar: "avatar-16.png",
-        birthdate: "1997-07-18",
-        city: "San Sebastián",
-        country: "España",
-        dni: "67890123P",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777444",
-        role: "USER",
-        token: "token12360",
-        zipcode: "20001",
-        createdAt: "2023-01-16T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_17",
-        email: "user17@example.com",
-        password: "password123",
-        name: "Rafael",
-        surname: "Ortega",
-        address: "Calle Montaña 23",
-        avatar: "avatar-17.png",
-        birthdate: "1981-09-12",
-        city: "Córdoba",
-        country: "España",
-        dni: "78901234Q",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777555",
-        role: "USER",
-        token: "token12361",
-        zipcode: "14001",
-        createdAt: "2023-01-17T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_18",
-        email: "user18@example.com",
-        password: "password123",
-        name: "Patricia",
-        surname: "Navarro",
-        address: "Calle Lago 67",
-        avatar: "avatar-18.png",
-        birthdate: "1999-02-25",
-        city: "Oviedo",
-        country: "España",
-        dni: "89012345R",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777666",
-        role: "USER",
-        token: "token12362",
-        zipcode: "33001",
-        createdAt: "2023-01-18T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_19",
-        email: "user19@example.com",
-        password: "password123",
-        name: "Fernando",
-        surname: "Calvo",
-        address: "Calle Flor 89",
-        avatar: "avatar-19.png",
-        birthdate: "1980-06-03",
-        city: "Tarragona",
-        country: "España",
-        dni: "90123456S",
-        gender: "Male",
-        isActive: true,
-        phone: "+34666777777",
-        role: "USER",
-        token: "token12363",
-        zipcode: "43001",
-        createdAt: "2023-01-19T00:00:00Z",
-        updatedAt: null
-    },
-    {
-        id: "user_20",
-        email: "user20@example.com",
-        password: "password123",
-        name: "Ana",
-        surname: "Reyes",
-        address: "Calle Viento 10",
-        avatar: "avatar-20.png",
-        birthdate: "1992-12-15",
-        city: "Pamplona",
-        country: "España",
-        dni: "01234567T",
-        gender: "Female",
-        isActive: true,
-        phone: "+34666777888",
-        role: "USER",
-        token: "token12364",
-        zipcode: "31001",
-        createdAt: "2023-01-20T00:00:00Z",
-        updatedAt: null
-    },
+			id: 'user_1',
+			email: 'user1@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Carlos',
+			surname: 'García',
+			address: 'Calle Falsa 123',
+			avatar: 'avatar-1.png',
+			birthdate: '1990-05-15',
+			city: 'Madrid',
+			country: 'España',
+			dni: '12345678A',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777888',
+			role: 'USER',
+			token: 'token12345',
+			zipcode: '28001',
+			createdAt: '2023-01-01T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_2',
+			email: 'user2@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Laura',
+			surname: 'Martínez',
+			address: 'Plaza Mayor 45',
+			avatar: 'avatar-2.png',
+			birthdate: '1985-08-20',
+			city: 'Barcelona',
+			country: 'España',
+			dni: '23456789B',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777999',
+			role: 'USER',
+			token: 'token12346',
+			zipcode: '08002',
+			createdAt: '2023-01-02T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_3',
+			email: 'user3@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Javier',
+			surname: 'López',
+			address: 'Avenida del Sol 78',
+			avatar: 'avatar-3.png',
+			birthdate: '1992-03-10',
+			city: 'Valencia',
+			country: 'España',
+			dni: '34567890C',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777111',
+			role: 'USER',
+			token: 'token12347',
+			zipcode: '46001',
+			createdAt: '2023-01-03T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_4',
+			email: 'user4@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Sofía',
+			surname: 'Pérez',
+			address: 'Calle Luna 34',
+			avatar: 'avatar-4.png',
+			birthdate: '1988-11-25',
+			city: 'Sevilla',
+			country: 'España',
+			dni: '45678901D',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777222',
+			role: 'USER',
+			token: 'token12348',
+			zipcode: '41001',
+			createdAt: '2023-01-04T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_5',
+			email: 'user5@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Miguel',
+			surname: 'Rodríguez',
+			address: 'Calle Estrella 56',
+			avatar: 'avatar-5.png',
+			birthdate: '1995-07-03',
+			city: 'Bilbao',
+			country: 'España',
+			dni: '56789012E',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777333',
+			role: 'USER',
+			token: 'token12349',
+			zipcode: '48001',
+			createdAt: '2023-01-05T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_6',
+			email: 'user6@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Lucía',
+			surname: 'Hernández',
+			address: 'Calle Norte 89',
+			avatar: 'avatar-6.png',
+			birthdate: '1993-09-12',
+			city: 'Málaga',
+			country: 'España',
+			dni: '67890123F',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777444',
+			role: 'USER',
+			token: 'token12350',
+			zipcode: '29001',
+			createdAt: '2023-01-06T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_7',
+			email: 'user7@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Diego',
+			surname: 'Sánchez',
+			address: 'Calle Sur 23',
+			avatar: 'avatar-7.png',
+			birthdate: '1987-04-18',
+			city: 'Zaragoza',
+			country: 'España',
+			dni: '78901234G',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777555',
+			role: 'USER',
+			token: 'token12351',
+			zipcode: '50001',
+			createdAt: '2023-01-07T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_8',
+			email: 'user8@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'María',
+			surname: 'Gómez',
+			address: 'Calle Este 67',
+			avatar: 'avatar-8.png',
+			birthdate: '1991-02-22',
+			city: 'Granada',
+			country: 'España',
+			dni: '89012345H',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777666',
+			role: 'USER',
+			token: 'token12352',
+			zipcode: '18001',
+			createdAt: '2023-01-08T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_9',
+			email: 'user9@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Pedro',
+			surname: 'Fernández',
+			address: 'Calle Oeste 45',
+			avatar: 'avatar-9.png',
+			birthdate: '1986-12-05',
+			city: 'Alicante',
+			country: 'España',
+			dni: '90123456I',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777777',
+			role: 'USER',
+			token: 'token12353',
+			zipcode: '03001',
+			createdAt: '2023-01-09T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_10',
+			email: 'user10@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Isabel',
+			surname: 'Ruiz',
+			address: 'Calle Central 90',
+			avatar: 'avatar-10.png',
+			birthdate: '1994-06-30',
+			city: 'Murcia',
+			country: 'España',
+			dni: '01234567J',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777888',
+			role: 'USER',
+			token: 'token12354',
+			zipcode: '30001',
+			createdAt: '2023-01-10T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_11',
+			email: 'user11@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Andrés',
+			surname: 'Torres',
+			address: 'Calle Pilar 12',
+			avatar: 'avatar-11.png',
+			birthdate: '1989-01-10',
+			city: 'Palma de Mallorca',
+			country: 'España',
+			dni: '12345678K',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777999',
+			role: 'USER',
+			token: 'token12355',
+			zipcode: '07001',
+			createdAt: '2023-01-11T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_12',
+			email: 'user12@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Clara',
+			surname: 'Vázquez',
+			address: 'Calle Marina 34',
+			avatar: 'avatar-12.png',
+			birthdate: '1996-05-22',
+			city: 'Las Palmas',
+			country: 'España',
+			dni: '23456789L',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777000',
+			role: 'USER',
+			token: 'token12356',
+			zipcode: '35001',
+			createdAt: '2023-01-12T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_13',
+			email: 'user13@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'David',
+			surname: 'Jiménez',
+			address: 'Calle Sierra 56',
+			avatar: 'avatar-13.png',
+			birthdate: '1984-08-15',
+			city: 'Santa Cruz de Tenerife',
+			country: 'España',
+			dni: '34567890M',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777111',
+			role: 'USER',
+			token: 'token12357',
+			zipcode: '38001',
+			createdAt: '2023-01-13T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_14',
+			email: 'user14@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Paula',
+			surname: 'Ramírez',
+			address: 'Calle Mar 78',
+			avatar: 'avatar-14.png',
+			birthdate: '1998-03-05',
+			city: 'Valladolid',
+			country: 'España',
+			dni: '45678901N',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777222',
+			role: 'USER',
+			token: 'token12358',
+			zipcode: '47001',
+			createdAt: '2023-01-14T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_15',
+			email: 'user15@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Álvaro',
+			surname: 'Gutiérrez',
+			address: 'Calle Valle 90',
+			avatar: 'avatar-15.png',
+			birthdate: '1983-11-28',
+			city: 'Santiago de Compostela',
+			country: 'España',
+			dni: '56789012O',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777333',
+			role: 'USER',
+			token: 'token12359',
+			zipcode: '15001',
+			createdAt: '2023-01-15T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_16',
+			email: 'user16@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Elena',
+			surname: 'Blanco',
+			address: 'Calle Río 45',
+			avatar: 'avatar-16.png',
+			birthdate: '1997-07-18',
+			city: 'San Sebastián',
+			country: 'España',
+			dni: '67890123P',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777444',
+			role: 'USER',
+			token: 'token12360',
+			zipcode: '20001',
+			createdAt: '2023-01-16T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_17',
+			email: 'user17@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Rafael',
+			surname: 'Ortega',
+			address: 'Calle Montaña 23',
+			avatar: 'avatar-17.png',
+			birthdate: '1981-09-12',
+			city: 'Córdoba',
+			country: 'España',
+			dni: '78901234Q',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777555',
+			role: 'USER',
+			token: 'token12361',
+			zipcode: '14001',
+			createdAt: '2023-01-17T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_18',
+			email: 'user18@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Patricia',
+			surname: 'Navarro',
+			address: 'Calle Lago 67',
+			avatar: 'avatar-18.png',
+			birthdate: '1999-02-25',
+			city: 'Oviedo',
+			country: 'España',
+			dni: '89012345R',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777666',
+			role: 'USER',
+			token: 'token12362',
+			zipcode: '33001',
+			createdAt: '2023-01-18T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_19',
+			email: 'user19@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Fernando',
+			surname: 'Calvo',
+			address: 'Calle Flor 89',
+			avatar: 'avatar-19.png',
+			birthdate: '1980-06-03',
+			city: 'Tarragona',
+			country: 'España',
+			dni: '90123456S',
+			gender: 'Male',
+			isActive: true,
+			phone: '+34666777777',
+			role: 'USER',
+			token: 'token12363',
+			zipcode: '43001',
+			createdAt: '2023-01-19T00:00:00Z',
+			updatedAt: null
+		},
+		{
+			id: 'user_20',
+			email: 'user20@example.com',
+			password: pluguinAdapters.encrypt('password123', 10),
+			name: 'Ana',
+			surname: 'Reyes',
+			address: 'Calle Viento 10',
+			avatar: 'avatar-20.png',
+			birthdate: '1992-12-15',
+			city: 'Pamplona',
+			country: 'España',
+			dni: '01234567T',
+			gender: 'Female',
+			isActive: true,
+			phone: '+34666777888',
+			role: 'USER',
+			token: 'token12364',
+			zipcode: '31001',
+			createdAt: '2023-01-20T00:00:00Z',
+			updatedAt: null
+		},
 		// Repite el mismo patrón para user_11 a user_20...
 
 		// Usuarios con rol ADMIN
 		{
 			id: 'user_21',
 			email: 'robert.admin@example.com',
-			password: 'admin123',
+			password: pluguinAdapters.encrypt('admin123', 10),
 			name: 'Robert',
-			surname: 'Smith',
+			surname: 'Hernandez',
 			address: 'Calle Admin 1',
 			avatar: 'avatar-11.png',
 			birthdate: '1980-03-15',
-			city: 'Madrid',
+			city: 'A Coruña',
 			country: 'España',
 			dni: '11111111K',
 			gender: 'Male',
@@ -665,13 +668,13 @@ async function fillDB() {
 		{
 			id: 'user_22',
 			email: 'ana.admin@example.com',
-			password: 'admin123',
+			password: pluguinAdapters.encrypt('admin123', 10),
 			name: 'Ana',
-			surname: 'González',
+			surname: 'Caballero',
 			address: 'Calle Admin 2',
 			avatar: 'avatar-12.png',
 			birthdate: '1982-07-22',
-			city: 'Barcelona',
+			city: 'Porriño',
 			country: 'España',
 			dni: '22222222L',
 			gender: 'Female',
@@ -686,13 +689,13 @@ async function fillDB() {
 		{
 			id: 'user_23',
 			email: 'julian.admin@example.com',
-			password: 'admin123',
-			name: 'Julián',
+			password: pluguinAdapters.encrypt('admin123', 10),
+			name: 'Arsenio Julián',
 			surname: 'Vargas',
 			address: 'Calle Admin 3',
 			avatar: 'avatar-13.png',
 			birthdate: '1984-11-10',
-			city: 'Valencia',
+			city: 'Pontevedra',
 			country: 'España',
 			dni: '33333333M',
 			gender: 'Male',
@@ -706,10 +709,79 @@ async function fillDB() {
 		}
 	];
 
+	const categories = [
+		/**
+		 * #1 Gastroniomia
+		 * 2# Relax
+		 * 3# Deportes
+		 * 4# Aventura
+		 * 5# Cultura
+		 * 6# Vida Nocturna
+		 * 7# Musica
+		 * 8# Gaming
+		 */
+		{
+			id: 1,
+			name: 'Gastronomía',
+			image: path.join(envs.SERVER, 'image/category/gastronomy.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 2,
+			name: 'Relax',
+			image: path.join(envs.SERVER, 'image/category/relax.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 3,
+			name: 'Deportes',
+			image: path.join(envs.SERVER, 'image/category/sports.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 4,
+			name: 'Aventura',
+			image: path.join(envs.SERVER, 'image/category/adventure.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 5,
+			name: 'Cultura',
+			image: path.join(envs.SERVER, 'image/category/culture.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 6,
+			name: 'Vida Nocturna',
+			image: path.join(envs.SERVER, 'image/category/nightlife.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 7,
+			name: 'Musica',
+			image: path.join(envs.SERVER, 'image/category/music.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		},
+		{
+			id: 8,
+			name: 'Gaming',
+			image: path.join(envs.SERVER, 'image/category/gaming.jpg'),
+			createdAt: new Date(),
+			updatedAt: null
+		}
+	];
+
 	const experiences = [
 		// Gastronomía
 		{
-			id: 'experience#2',
+			id: 1,
 			name: 'Cena gourmet en El Celler de Can Roca',
 			description:
 				'Experimenta una cena inolvidable en uno de los mejores restaurantes del mundo.',
@@ -721,16 +793,17 @@ async function fillDB() {
 			capacity: null,
 			stock: 5,
 			availability: true,
-			category: 'gastronomia',
+			category_id: 1,
 			image:
 				'https://images.unsplash.com/photo-1534681479-f4f89d8e2ab6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Relax
 		{
-			id: 'experience#11',
+			id: 2,
 			name: 'Masaje relajante en spa natural',
 			description: 'Relájate con un masaje holístico en un entorno natural.',
 			price: 80,
@@ -741,15 +814,16 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#12',
+			id: 3,
 			name: 'Yoga al amanecer en la playa',
 			description:
 				'Conecta con tu mente y cuerpo mientras disfrutas del amanecer.',
@@ -761,16 +835,17 @@ async function fillDB() {
 			capacity: 30,
 			stock: 25,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.unsplash.com/photo-1504496842168-3c9b032c10d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Aire Libre
 		{
-			id: 'experience#21',
+			id: 4,
 			name: 'Excursión a los Picos de Europa',
 			description: 'Explora las montañas más impresionantes de España.',
 			price: 60,
@@ -781,15 +856,16 @@ async function fillDB() {
 			capacity: 15,
 			stock: 10,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.unsplash.com/photo-1560759609-14828734a0ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#22',
+			id: 5,
 			name: 'Kayak en el río Ebro',
 			description:
 				'Adéntrate en el corazón de la naturaleza mientras navegas por el río Ebro.',
@@ -801,16 +877,17 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.pexels.com/photos/356002/pexels-photo-356002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Deportes
 		{
-			id: 'experience#31',
+			id: 6,
 			name: 'Partido de fútbol en el Camp Nou',
 			description: 'Vive la pasión del fútbol en el estadio del FC Barcelona.',
 			price: 100,
@@ -821,15 +898,16 @@ async function fillDB() {
 			capacity: 99000,
 			stock: 500,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#32',
+			id: 7,
 			name: 'Escalada en roca en Margalef',
 			description:
 				'Prueba tus habilidades en uno de los destinos de escalada más famosos de Europa.',
@@ -841,16 +919,17 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Cultural
 		{
-			id: 'experience#41',
+			id: 8,
 			name: 'Visita guiada al Museo del Prado',
 			description:
 				'Descubre las obras maestras del arte español en el Museo del Prado.',
@@ -862,15 +941,16 @@ async function fillDB() {
 			capacity: 50,
 			stock: 40,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#42',
+			id: 9,
 			name: 'Taller de flamenco en Sevilla',
 			description: 'Aprende los movimientos y ritmos del flamenco auténtico.',
 			price: 50,
@@ -881,16 +961,17 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Gaming
 		{
-			id: 'experience#51',
+			id: 10,
 			name: 'Noche de videojuegos en LAN Party',
 			description: 'Únete a una noche épica de gaming con amigos.',
 			price: 20,
@@ -901,15 +982,16 @@ async function fillDB() {
 			capacity: 100,
 			stock: 80,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#52',
+			id: 11,
 			name: 'Torneo de esports',
 			description: 'Participa en un torneo de esports con premios en efectivo.',
 			price: 30,
@@ -920,16 +1002,17 @@ async function fillDB() {
 			capacity: 50,
 			stock: 40,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		// Música
 		{
-			id: 'experience#61',
+			id: 12,
 			name: 'Concierto de jazz en el Palau de la Música',
 			description:
 				'Disfruta de un concierto íntimo de jazz en un entorno único.',
@@ -941,15 +1024,16 @@ async function fillDB() {
 			capacity: 200,
 			stock: 150,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#62',
+			id: 13,
 			name: 'Festival de música electrónica',
 			description:
 				'Vive la energía de un festival de música electrónica al aire libre.',
@@ -961,21 +1045,23 @@ async function fillDB() {
 			capacity: 10000,
 			stock: 5000,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Gastronomía
 		{
-			id: 'experience#63',
+			id: 14,
 			name: 'Taller de cocina italiana',
 			description:
 				'Aprende a cocinar pasta fresca y pizzas artesanales con chefs profesionales.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 75,
 			duration: 2.5,
 			dateFrom: new Date(),
@@ -984,18 +1070,19 @@ async function fillDB() {
 			capacity: 12,
 			stock: 8,
 			availability: true,
-			category: 'gastronomia',
+			category_id: 1,
 			image:
 				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#64',
+			id: 15,
 			name: 'Degustación de vinos en La Rioja',
 			description:
 				'Descubre los mejores vinos de La Rioja en una bodega centenaria.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 90,
 			duration: 3.0,
 			dateFrom: new Date(),
@@ -1004,7 +1091,7 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'gastronomia',
+			category_id: 1,
 			image:
 				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1013,10 +1100,11 @@ async function fillDB() {
 
 		// Relax
 		{
-			id: 'experience#65',
+			id: 16,
 			name: 'Retiro de meditación mindfulness',
 			description: 'Conecta contigo mismo en un retiro de meditación guiada.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 120,
 			duration: 4.5,
 			dateFrom: new Date(),
@@ -1025,17 +1113,18 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#66',
+			id: 17,
 			name: 'Baño termal en aguas naturales',
 			description: 'Relájate en piscinas termales rodeadas de naturaleza.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 50,
 			duration: 2.0,
 			dateFrom: new Date(),
@@ -1044,7 +1133,7 @@ async function fillDB() {
 			capacity: 30,
 			stock: 25,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.unsplash.com/photo-1570849370777-36a1e50631e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1053,11 +1142,12 @@ async function fillDB() {
 
 		// Aire Libre
 		{
-			id: 'experience#67',
+			id: 18,
 			name: 'Senderismo en el Parque Nacional de Ordesa',
 			description:
 				'Explora las impresionantes montañas y cascadas del Parque Nacional de Ordesa.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 45,
 			duration: 5.0,
 			dateFrom: new Date(),
@@ -1066,18 +1156,19 @@ async function fillDB() {
 			capacity: 15,
 			stock: 12,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.unsplash.com/photo-1560759609-14828734a0ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#68',
+			id: 19,
 			name: 'Observación de estrellas en el desierto de Tabernas',
 			description:
 				'Disfruta de un cielo estrellado en uno de los desiertos más hermosos de Europa.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 30,
 			duration: 3.0,
 			dateFrom: new Date(),
@@ -1086,7 +1177,7 @@ async function fillDB() {
 			capacity: 25,
 			stock: 20,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.pexels.com/photos/1055083/pexels-photo-1055083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1095,10 +1186,11 @@ async function fillDB() {
 
 		// Deportes
 		{
-			id: 'experience#69',
+			id: 20,
 			name: 'Clase de surf en Maspalomas',
 			description: 'Aprende a surfear en las olas de la playa de Maspalomas.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 60,
 			duration: 2.0,
 			dateFrom: new Date(),
@@ -1107,18 +1199,19 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.unsplash.com/photo-1597645587534-5b018daa754b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#70',
+			id: 21,
 			name: 'Buceo en el Cabo de Gata',
 			description:
 				'Explora la vida marina en el parque natural submarino del Cabo de Gata.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 80,
 			duration: 3.5,
 			dateFrom: new Date(),
@@ -1127,7 +1220,7 @@ async function fillDB() {
 			capacity: 8,
 			stock: 6,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.pexels.com/photos/1388513/pexels-photo-1388513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1136,11 +1229,12 @@ async function fillDB() {
 
 		// Cultural
 		{
-			id: 'experience#71',
+			id: 22,
 			name: 'Visita al Alhambra en Granada',
 			description:
 				'Descubre la arquitectura única del palacio nazarí de la Alhambra.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 40,
 			duration: 3.0,
 			dateFrom: new Date(),
@@ -1149,17 +1243,18 @@ async function fillDB() {
 			capacity: 50,
 			stock: 40,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#72',
+			id: 23,
 			name: 'Taller de cerámica tradicional',
 			description: 'Aprende a crear piezas únicas de cerámica andaluza.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 55,
 			duration: 2.5,
 			dateFrom: new Date(),
@@ -1168,7 +1263,7 @@ async function fillDB() {
 			capacity: 12,
 			stock: 10,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1177,11 +1272,12 @@ async function fillDB() {
 
 		// Gaming
 		{
-			id: 'experience#73',
+			id: 24,
 			name: 'Sesión de realidad virtual',
 			description:
 				'Experimenta juegos inmersivos en un centro de realidad virtual.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 35,
 			duration: 1.5,
 			dateFrom: new Date(),
@@ -1190,17 +1286,18 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#74',
+			id: 25,
 			name: 'Jornada de videojuegos retro',
 			description: 'Revive tus juegos favoritos de los años 80 y 90.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 25,
 			duration: 3.0,
 			dateFrom: new Date(),
@@ -1209,7 +1306,7 @@ async function fillDB() {
 			capacity: 30,
 			stock: 25,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.pexels.com/photos/356002/pexels-photo-356002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1218,11 +1315,12 @@ async function fillDB() {
 
 		// Música
 		{
-			id: 'experience#75',
+			id: 26,
 			name: 'Concierto de música clásica en el Teatro Real',
 			description:
 				'Disfruta de una velada con música clásica en el icónico Teatro Real.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 60,
 			duration: 2.0,
 			dateFrom: new Date(),
@@ -1231,18 +1329,19 @@ async function fillDB() {
 			capacity: 150,
 			stock: 120,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
 			updatedAt: new Date()
 		},
 		{
-			id: 'experience#76',
+			id: 27,
 			name: 'Jam session en vivo',
 			description:
 				'Únete a una sesión de improvisación musical con artistas locales.',
 			userId: 'admin#1',
+			isFavorite: false,
 			price: 20,
 			duration: 2.5,
 			dateFrom: new Date(),
@@ -1251,7 +1350,7 @@ async function fillDB() {
 			capacity: 50,
 			stock: 40,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1259,7 +1358,7 @@ async function fillDB() {
 		},
 		// Gastronomía
 		{
-			id: 'experience#77',
+			id: 28,
 			name: 'Taller de cocina mediterránea',
 			description:
 				'Aprende a preparar platos tradicionales del mar Mediterráneo.',
@@ -1271,15 +1370,16 @@ async function fillDB() {
 			capacity: 15,
 			stock: 12,
 			availability: true,
-			category: 'gastronomia',
+			category_id: 1,
 			image:
 				'https://images.unsplash.com/photo-1560487489-0926f7b94a4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#78',
+			id: 29,
 			name: 'Degustación de aceite de oliva virgen extra',
 			description: 'Descubre los mejores aceites de oliva de Andalucía.',
 			price: 50,
@@ -1290,17 +1390,18 @@ async function fillDB() {
 			capacity: 25,
 			stock: 20,
 			availability: true,
-			category: 'gastronomia',
+			category_id: 1,
 			image:
 				'https://images.pexels.com/photos/109272/pexels-photo-109272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Relax
 		{
-			id: 'experience#79',
+			id: 30,
 			name: 'Sesión de aromaterapia',
 			description: 'Relájate con una sesión de aromaterapia personalizada.',
 			price: 60,
@@ -1311,15 +1412,16 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.unsplash.com/photo-1523275335684-378c8e4c465b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#80',
+			id: 31,
 			name: 'Meditación guiada en la montaña',
 			description:
 				'Conecta con la naturaleza mientras meditas en un entorno tranquilo.',
@@ -1331,17 +1433,18 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'relax',
+			category_id: 2,
 			image:
 				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Aire Libre
 		{
-			id: 'experience#81',
+			id: 32,
 			name: 'Ruta en bicicleta por el Camino de Santiago',
 			description:
 				'Explora uno de los caminos más famosos del mundo en bicicleta.',
@@ -1353,15 +1456,16 @@ async function fillDB() {
 			capacity: 12,
 			stock: 10,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.unsplash.com/photo-1509630049375-64c3de919cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#82',
+			id: 33,
 			name: 'Observación de aves en Doñana',
 			description:
 				'Disfruta de la biodiversidad única del Parque Nacional de Doñana.',
@@ -1373,17 +1477,18 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'aire libre',
+			category_id: 4,
 			image:
 				'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Deportes
 		{
-			id: 'experience#83',
+			id: 34,
 			name: 'Clase de paddle surf en Ibiza',
 			description: 'Aprende a navegar sobre las aguas cristalinas de Ibiza.',
 			price: 65,
@@ -1394,15 +1499,16 @@ async function fillDB() {
 			capacity: 15,
 			stock: 12,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#84',
+			id: 35,
 			name: 'Partido de baloncesto profesional',
 			description: 'Vive la emoción de un partido de baloncesto en vivo.',
 			price: 45,
@@ -1413,17 +1519,18 @@ async function fillDB() {
 			capacity: 15000,
 			stock: 1000,
 			availability: true,
-			category: 'deportes',
+			category_id: 3,
 			image:
 				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Cultural
 		{
-			id: 'experience#85',
+			id: 36,
 			name: 'Visita al Alcázar de Sevilla',
 			description: 'Admira la arquitectura mudéjar del Alcázar de Sevilla.',
 			price: 35,
@@ -1434,15 +1541,16 @@ async function fillDB() {
 			capacity: 50,
 			stock: 40,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#86',
+			id: 37,
 			name: 'Taller de pintura al óleo',
 			description:
 				'Exprésate a través de la pintura con técnicas tradicionales.',
@@ -1454,17 +1562,18 @@ async function fillDB() {
 			capacity: 10,
 			stock: 8,
 			availability: true,
-			category: 'cultural',
+			category_id: 5,
 			image:
 				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Gaming
 		{
-			id: 'experience#87',
+			id: 38,
 			name: 'Clase de diseño de videojuegos',
 			description: 'Aprende a crear tus propios videojuegos desde cero.',
 			price: 90,
@@ -1475,15 +1584,16 @@ async function fillDB() {
 			capacity: 20,
 			stock: 15,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#88',
+			id: 39,
 			name: 'Noche de juegos de mesa',
 			description:
 				'Disfruta de una noche divertida con juegos de mesa clásicos.',
@@ -1495,17 +1605,18 @@ async function fillDB() {
 			capacity: 30,
 			stock: 25,
 			availability: true,
-			category: 'gaming',
+			category_id: 8,
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 
 		// Música
 		{
-			id: 'experience#89',
+			id: 40,
 			name: 'Concierto de música clásica al aire libre',
 			description:
 				'Disfruta de un concierto de música clásica en un entorno natural.',
@@ -1517,15 +1628,16 @@ async function fillDB() {
 			capacity: 200,
 			stock: 150,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
-			id: 'experience#90',
+			id: 41,
 			name: 'Jam session de rock',
 			description: 'Únete a una improvisación musical con músicos locales.',
 			price: 30,
@@ -1536,21 +1648,26 @@ async function fillDB() {
 			capacity: 30,
 			stock: 25,
 			availability: true,
-			category: 'musica',
+			category_id: 7,
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
+			isFavorite: false,
 			createdAt: new Date(),
 			updatedAt: null
 		}
 	];
 
-	for (const experience of experiences) {
-		await ExperienceModel.upsert(experience);
-	}
-
 	for (const user of users) {
 		await UserModel.upsert(user);
+	}
+
+	for (const category of categories) {
+		await CategoryModel.upsert(category);
+	}
+
+	for (const experience of experiences) {
+		await ExperienceModel.upsert(experience);
 	}
 }
 

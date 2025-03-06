@@ -1,8 +1,8 @@
 const UserDTO = require('../../domain/dtos/UserDTO');
 const UserService = require('../../domain/services/UserService');
-const UserRepositorySequelize = require('../../infrastructure/repositories/UserRepositorySequelize');
+const UserRepositoryImpl = require('../../infrastructure/repositories/UserRepositoryImpl');
 
-const userRepository = new UserRepositorySequelize();
+const userRepository = new UserRepositoryImpl();
 const userService = new UserService(userRepository);
 
 class UserController {

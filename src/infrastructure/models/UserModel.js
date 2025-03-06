@@ -4,7 +4,7 @@ const config = require('../../config');
 
 const DEFAULT_ROLE = 'USER';
 
-const UserModel = sequelize.sequelize.define(
+const UserModel = sequelize.define(
 	config.envs.DATABASE.TABLES.USERS,
 	{
 		id: { type: DataTypes.STRING, primaryKey: true },

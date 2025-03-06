@@ -2,13 +2,15 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../../config/database/mysql/sequelize');
 const UserModel = require('./UserModel');
 const config = require('../../config');
+const CategoryModel = require('./CategoryModel');
 
 const USER_RELATION_KEY = 'user_id';
+const CATEGORY_RELATION_KEY = 'category_id';
 
-const ExperienceModel = sequelize.sequelize.define(
+const ExperienceModel = sequelize.define(
 	config.envs.DATABASE.TABLES.EXPERIENCES,
 	{
-		id: { type: DataTypes.STRING, primaryKey: true },
+		id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
 		name: { type: DataTypes.STRING },
 		description: { type: DataTypes.STRING },
 		price: { type: DataTypes.DOUBLE },
@@ -19,7 +21,13 @@ const ExperienceModel = sequelize.sequelize.define(
 		capacity: { type: DataTypes.INTEGER },
 		stock: { type: DataTypes.INTEGER },
 		availability: { type: DataTypes.BOOLEAN },
-		category: { type: DataTypes.STRING },
+		category_id: {
+			type: DataTypes.INTEGER,
+			references: {
+				model: CategoryModel,
+				key: 'id'
+			}
+		},
 		image: { type: DataTypes.STRING },
 		user_id: {
 			type: DataTypes.STRING,
@@ -28,13 +36,17 @@ const ExperienceModel = sequelize.sequelize.define(
 				key: 'id'
 			}
 		},
+		isFavorite: { type: DataTypes.BOOLEAN },
 		createdAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW },
-		updatedAt: { type: DataTypes.DATE, defaultValue: DataTypes.NOW }
+		updatedAt: { type: DataTypes.DATE }
 	}
 );
 
 // Relación
 ExperienceModel.belongsTo(UserModel, { foreignKey: USER_RELATION_KEY });
 UserModel.hasMany(ExperienceModel, { foreignKey: USER_RELATION_KEY });
+
+ExperienceModel.belongsTo(CategoryModel, { foreignKey: CATEGORY_RELATION_KEY });
+CategoryModel.hasMany(ExperienceModel, { foreignKey: CATEGORY_RELATION_KEY });
 
 module.exports = ExperienceModel;

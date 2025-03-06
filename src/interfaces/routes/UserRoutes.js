@@ -9,7 +9,7 @@ const UserValidator = require('../middlewares/validators/UserValidator');
 const router = express.Router();
 
 /**
-	 * @openapi
+	 * @swagger
 	 * /jedis:
 	 *   post:
 	 *     summary: Create a new Jedi
@@ -31,19 +31,19 @@ const router = express.Router();
 	 *         description: Some server error
 	 */
 router
-	.post('/users', UserValidator.validateUser, UserController.create)
+	.post('/user', UserValidator.validateUser, UserController.create)
 
-	.get('/users/:id', authMiddleware, UserController.getById)
+	.get('/user/:id', authMiddleware, UserController.getById)
 
 	.put(
-		'/users/:id',
+		'/user/:id',
 		authMiddleware,
 		UserValidator.validateUpdateUser,
 		UserController.update
 	)
 
 	.delete(
-		'/users/:id',
+		'/user/:id',
 		authMiddleware,
 		roleMiddleware('ADMIN'),
 		UserController.delete

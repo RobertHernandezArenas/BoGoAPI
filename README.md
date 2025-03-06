@@ -17,8 +17,8 @@ src/
 │
 ├── infrastructure/          # Implementaciones concretas
 │   ├── repositories/        # Implementaciones de repositorios
-│   │   ├── UserRepositorySequelize.js
-│   │   └── ExperienceRepositorySequelize.js
+│   │   ├── UserRepositoryImpl.js
+│   │   └── ExperienceRepositoryImpl.js
 │   └── database/            # Modelos de Sequelize
 │       ├── User.js
 │       └── Experience.js

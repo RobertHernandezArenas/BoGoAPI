@@ -3,7 +3,7 @@ const { generateToken, verifyToken } = require('./jwt');
 const { generateID } = require('./nanoID');
 const { generateCode } = require('./generateCode');
 
-const adapters = {
+const pluguinAdapters = {
 	encrypt,
 	encryptCompare,
 	generateID,
@@ -12,4 +12,4 @@ const adapters = {
 	generateCode
 };
 
-module.exports = { adapters };
+module.exports = { pluguinAdapters };

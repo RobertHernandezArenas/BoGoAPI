@@ -3,6 +3,7 @@ const { get } = require('env-var');
 
 const envs = {
 	PORT: get('PORT').required().asPortNumber(),
+	SERVER: get('SERVER').default('https://apieverywhere.com').asString(),
 	ENVIRONMENT: get('ENVIRONMENT').default('development').asString(),
 	API: get('API').default('/api').asString(),
 	VERSION: get('VERSION').default('v1').asString(),
@@ -28,6 +29,7 @@ const envs = {
 			USERNAME: get('MYSQL_USERNAME').default('root').asString()
 		},
 		TABLES: {
+			CATEGORIES: get('CATEGORIES_TABLE').default('categories').asString(),
 			EXPERIENCES: get('EXPERIENCES_TABLE').default('experiences').asString(),
 			USERS: get('USERS_TABLE').default('users').asString()
 		}

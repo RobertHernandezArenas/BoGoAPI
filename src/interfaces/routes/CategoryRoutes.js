@@ -1,37 +1,37 @@
 const express = require('express');
-const ExperienceController = require('../controllers/ExperienceController');
+const CategoryController = require('../controllers/CategoryController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
 const ExperienceValidator = require('../middlewares/validators/ExperienceValidator');
 
-const router = express.Router();
+const categoryRouter = express.Router();
 
 // Rutas para Experience
-router.post(
-	'/experience',
+categoryRouter.post(
+	'/category',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateExperience,
-	ExperienceController.create
+	CategoryController.create
 );
 
-router.get('/experience', /* authMiddleware, */ ExperienceController.getAll);
+categoryRouter.get('/category', CategoryController.getAll);
 
-router.get('/experience/:id', authMiddleware, ExperienceController.getById);
+categoryRouter.get('/category/:id', CategoryController.getById);
 
-router.put(
-	'/experience/:id',
+categoryRouter.put(
+	'/category/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateUpdateExperience,
-	ExperienceController.update
+	CategoryController.update
 );
 
-router.delete(
-	'/experience/:id',
+categoryRouter.delete(
+	'/category/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
-	ExperienceController.delete
+	CategoryController.delete
 );
 
-module.exports = router;
+module.exports = categoryRouter;

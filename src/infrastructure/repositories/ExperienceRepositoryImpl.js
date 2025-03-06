@@ -1,7 +1,7 @@
 const ExperienceModels = require('../models/ExperienceModel');
 const ExperienceEntity = require('../../domain/entities/ExperienceEntity');
 
-class ExperienceRepositorySequelize {
+class ExperienceRepositoryImpl {
 	async create(experienceEntity) {
 		const experience = await ExperienceModels.create(experienceEntity);
 		return new ExperienceEntity(experience);
@@ -33,4 +33,4 @@ class ExperienceRepositorySequelize {
 	}
 }
 
-module.exports = ExperienceRepositorySequelize;
+module.exports = ExperienceRepositoryImpl;

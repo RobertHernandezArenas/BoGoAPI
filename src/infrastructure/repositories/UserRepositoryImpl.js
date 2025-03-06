@@ -2,7 +2,7 @@ const UserModel = require('../models/UserModel');
 const UserEntity = require('../../domain/entities/UserEntity');
 const UserRepository = require('../../domain/repositories/UserRepository');
 
-class UserRepositorySequelize extends UserRepository {
+class UserRepositoryImpl extends UserRepository {
 	async create(userEntity) {
 		const user = await UserModel.create(userEntity);
 		return new UserEntity(user);
@@ -33,4 +33,4 @@ class UserRepositorySequelize extends UserRepository {
 	}
 }
 
-module.exports = UserRepositorySequelize;
+module.exports = UserRepositoryImpl;
