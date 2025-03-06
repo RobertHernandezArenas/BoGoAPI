@@ -1,4 +1,5 @@
 const swaggerJsDoc = require('swagger-jsdoc');
+const config = require('../../config');
 
 const swaggerDefinitions = {
 	definition: {
@@ -18,14 +19,14 @@ const swaggerDefinitions = {
 		},
 		servers: [
 			{
-				url: 'http://localhost:8000',
+				url: `http://localhost:${config.envs.PORT}`,
 				description: 'Local Server'
 			},
 			{
-				url: 'https://apieverywhere.bookandgo.com',
+				url: `https://bookandgo.${config.envs.HOST}`,
 				description: 'API Everywhere Server'
 			}
-		],
+		]
 	},
 	apis: ['./specs_.yml']
 };

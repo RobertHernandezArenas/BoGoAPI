@@ -3,6 +3,7 @@ const { get } = require('env-var');
 
 const envs = {
 	PORT: get('PORT').required().asPortNumber(),
+	HOST: get('HOST').default('localhost').asString(),
 	SERVER: get('SERVER').default('https://apieverywhere.com').asString(),
 	ENVIRONMENT: get('ENVIRONMENT').default('development').asString(),
 	API: get('API').default('/api').asString(),
