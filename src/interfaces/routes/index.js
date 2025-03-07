@@ -5,16 +5,33 @@ const swaggerDOC = require('../docs/swagger');
 const CategoryRoutes = require('./CategoryRoutes');
 const ExperienceRoutes = require('./ExperienceRoutes');
 const UserRoutes = require('./UserRoutes');
-const errorHandler = require('../middlewares/errorHandler');
 
 const AppRouter = express.Router();
 
 AppRouter.use('/v1/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDOC))
-AppRouter.use('/v1/categories', CategoryRoutes);
-AppRouter.use('/v1/experiences',ExperienceRoutes);
-AppRouter.use('/v1/users', UserRoutes);
-AppRouter.use('*', errorHandler);
 
+	.use('/v1/categories', CategoryRoutes)
 
+	.use('/v1/experiences', ExperienceRoutes)
+
+	.use('/v1/users', UserRoutes)
+
+	.use('*', (request, response) => {
+		response.status(404).json({
+			error: {
+				code: 404,
+				message: 'Page not found'
+			},
+			data: false
+		});
+	})
+
+	.use((error, request, response, next) => {
+		logger.error(`[Server Error]: ${error.message}`);
+		response.status(500).json({
+			error: 'Internal Server Error',
+			details: 'Something went wrong on the server'
+		});
+	});
 
 module.exports = AppRouter;
