@@ -8,10 +8,10 @@ const categoryService = new CategoryService(categoryRepository);
 class CategoryController {
 	async create(req, res) {
 		try {
-			const experienceDTO = new CategoryDTO(req.body);
-			const experience =
-				await categoryService.createExperience(experienceDTO);
-			res.status(201).json(experience);
+			const categoriesDTO = new CategoryDTO(req.body);
+			const categories =
+				await categoryService.createCategories(categoriesDTO);
+			res.status(201).json(categories);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
 		}
@@ -19,13 +19,13 @@ class CategoryController {
 
 	async getAll(req, res) {
 		try {
-			const experiences = await categoryService.getAllExperiences();
-			const experienceDTOs = experiences.map(
-				(experience) => new CategoryDTO(experience)
+			const categories = await categoryService.getAllCategories();
+			const categoriesDTOs = categories.map(
+				(categories) => new CategoryDTO(categories)
 			);
 			res.status(200).json({
 				error: false,
-				data: experienceDTOs
+				data: categoriesDTOs
 			});
 		} catch (error) {
 			res.status(500).json({
@@ -37,13 +37,13 @@ class CategoryController {
 
 	async getById(req, res) {
 		try {
-			const experience = await categoryService.getExperienceById(
+			const categories = await categoryService.getCategoryById(
 				req.params.id
 			);
-			if (!experience)
-				return res.status(404).json({ error: 'Experience not found' });
-			const experienceDTO = new CategoryDTO(experience);
-			res.status(200).json(experienceDTO);
+			if (!categories)
+				return res.status(404).json({ error: 'categories not found' });
+			const categoriesDTO = new CategoryDTO(categories);
+			res.status(200).json(categoriesDTO);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
 		}
@@ -51,12 +51,12 @@ class CategoryController {
 
 	async update(req, res) {
 		try {
-			const experienceDTO = new CategoryDTO(req.body);
-			const experience = await categoryService.updateExperience(
+			const categoriesDTO = new CategoryDTO(req.body);
+			const categories = await categoryService.updateCategory(
 				req.params.id,
-				experienceDTO
+				categoriesDTO
 			);
-			res.status(200).json(experience);
+			res.status(200).json(categories);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
 		}
@@ -64,7 +64,7 @@ class CategoryController {
 
 	async delete(req, res) {
 		try {
-			await categoryService.deleteExperience(req.params.id);
+			await categoryService.deleteCategory(req.params.id);
 			res.status(204).send();
 		} catch (error) {
 			res.status(500).json({ error: error.message });

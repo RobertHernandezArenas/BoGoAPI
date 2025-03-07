@@ -8,19 +8,19 @@ const categoryRoutes = express.Router();
 
 // Rutas para Experience
 categoryRoutes.post(
-	'/category',
+	'/',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateExperience,
 	CategoryController.create
 );
 
-categoryRoutes.get('/category', CategoryController.getAll);
+categoryRoutes.get('/', CategoryController.getAll);
 
-categoryRoutes.get('/category/:id', CategoryController.getById);
+categoryRoutes.get('/:id', CategoryController.getById);
 
 categoryRoutes.put(
-	'/category/:id',
+	'/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateUpdateExperience,
@@ -28,7 +28,7 @@ categoryRoutes.put(
 );
 
 categoryRoutes.delete(
-	'/category/:id',
+	'/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	CategoryController.delete

@@ -8,19 +8,19 @@ const router = express.Router();
 
 // Rutas para Experience
 router.post(
-	'/experience',
+	'/',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateExperience,
 	ExperienceController.create
 );
 
-router.get('/experience', /* authMiddleware, */ ExperienceController.getAll);
+router.get('/', /* authMiddleware, */ ExperienceController.getAll);
 
-router.get('/experience/:id', authMiddleware, ExperienceController.getById);
+router.get('/:id', authMiddleware, ExperienceController.getById);
 
 router.put(
-	'/experience/:id',
+	'/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceValidator.validateUpdateExperience,
@@ -28,7 +28,7 @@ router.put(
 );
 
 router.delete(
-	'/experience/:id',
+	'/:id',
 	authMiddleware,
 	roleMiddleware('ADMIN'),
 	ExperienceController.delete
