@@ -8,10 +8,11 @@ const path = require('path');
 const sequelize = require('./config/database/mysql/sequelize');
 const config = require('./config');
 const AppRouter = require('./interfaces/routes');
+const { buildLogger } = require('./utils/logger');
 
 const app = express();
 const PORT = config.envs.PORT || 3000;
-const publicFolder = path.join(__dirname, 'public');
+const logger = buildLogger('[File Path]: src/app');
 
 app
 	.use(morgan('dev'))
@@ -25,13 +26,13 @@ app
 	)
 	.use(express.json())
 	.use(express.urlencoded({ extended: true }))
-	.use(express.static(publicFolder))
+	.use(express.static("public"))
 	.use('/', AppRouter)
 	.listen(PORT, () => {
 		try {
 			sequelize.sync();
-			console.log('Connection has been established successfully.');
-			console.log('Server is running at http://localhost:' + PORT);
+			logger.log('Connection has been established successfully.');
+			logger.log('Server is running at http://localhost:' + PORT);
 		} catch (error) {
 			console.error('Unable to connect to the database:', error.message);
 		}
