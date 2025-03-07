@@ -23,12 +23,12 @@ const swaggerDefinitions = {
 				description: 'Local Server'
 			},
 			{
-				url: `https://bookandgo.${config.envs.HOST}`,
+				url: `https://${config.envs.SERVER}`,
 				description: 'API Everywhere Server'
 			}
 		]
 	},
-	apis: ['./specs_.yml']
+	apis: ['./src/interfaces/routes/*.js']
 };
 
 const swaggerDOC = swaggerJsDoc(swaggerDefinitions);

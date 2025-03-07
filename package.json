@@ -19,6 +19,7 @@
 		"dev": "npm run build && nodemon --env-file=.env.development ./lib/app.js",
 		"lint": "eslint src/**/*.js --fix",
 		"format": "prettier src/**/*.js --write",
+		"db": "node ./loadData.js",
 		"start": "nodemon --env-file=.env ./src/app.js"
 	},
 	"devDependencies": {
