@@ -722,56 +722,56 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 		{
 			id: 1,
 			name: 'Gastronomía',
-			image: '/image/category/gastronomy.jpg',
+			image: '/images/category/gastronomy.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 2,
 			name: 'Relax',
-			image: '/image/category/relax.jpg',
+			image: '/images/category/relax.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 3,
 			name: 'Deportes',
-			image: '/image/category/sports.jpg',
+			image: '/images/category/sports.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 4,
 			name: 'Aventura',
-			image: '/image/category/adventure.jpg',
+			image: '/images/category/adventure.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 5,
 			name: 'Cultura',
-			image: '/image/category/culture.jpg',
+			image: '/images/category/culture.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 6,
 			name: 'Vida Nocturna',
-			image: '/image/category/nightlife.jpg',
+			image: '/images/category/nightlife.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 7,
 			name: 'Musica',
-			image: '/image/category/music.jpg',
+			image: '/images/category/music.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 8,
 			name: 'Gaming',
-			image: '/image/category/gaming.jpg',
+			image: '/images/category/gaming.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		}
