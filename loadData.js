@@ -793,7 +793,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 1,
 			image:
-				'https://images.unsplash.com/photo-1534681479-f4f89d8e2ab6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://lh3.googleusercontent.com/p/AF1QipO95tEFDDA6x4e6QGNF6ONRRrWe-6tmTqGxBvEl=s680-w680-h510',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -814,7 +814,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 2,
 			image:
-				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -835,7 +835,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 2,
 			image:
-				'https://images.unsplash.com/photo-1504496842168-3c9b032c10d6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://images.unsplash.com/photo-1587216829015-3e15edf56137?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -856,7 +856,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 4,
 			image:
-				'https://images.unsplash.com/photo-1560759609-14828734a0ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://buendia-pro-app.s3.eu-west-3.amazonaws.com/s3fs-public/2024-12/excursion-picos-europa-desde-oviedo.jpg?VersionId=Z9n104HK1b9cx71AZUyr2GXgWcRSv73q',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -876,8 +876,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 4,
-			image:
-				'https://images.pexels.com/photos/356002/pexels-photo-356002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+			image: 'https://aventuratoursalou.com/images/20200526_141824.jpg',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -898,7 +897,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 3,
 			image:
-				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://www.fcbarcelona.com/photo-resources/2021/08/09/c4f2dddd-2152-4b8b-acf8-826b4377e29d/Camp-Nou-4.jpg?width=3200&height=2000',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -919,7 +918,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 3,
 			image:
-				'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://media-cdn.tripadvisor.com/media/photo-s/12/64/d6/9d/escalada-en-margalef.jpg',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -941,7 +940,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 5,
 			image:
-				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://content3.cdnprado.net/imagenes/Documentos/imgsem/c9/c928/c9284595-b7c7-ff6b-92bf-b42cbea3ffdb/5612ce87-ade3-78f4-0baa-b9df91dc7269.jpg',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -961,7 +960,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 5,
 			image:
-				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
+				'https://media.tacdn.com/media/attractions-splice-spp-674x446/12/7b/d2/81.jpg',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
@@ -982,7 +981,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			availability: true,
 			category_id: 8,
 			image:
-				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+				'https://fotografias.larazon.es/clipping/cmsimages02/2022/11/22/8287004F-0C2D-4C4A-BC07-303CB88869FE/98.jpg?crop=3000,1688,x0,y156&width=1900&height=1069&optimize=low&format=webply',
 			userId: 'admin#1',
 			isFavorite: false,
 			createdAt: new Date(),
