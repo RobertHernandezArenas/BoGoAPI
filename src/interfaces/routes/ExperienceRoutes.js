@@ -9,8 +9,8 @@ const router = express.Router();
 // Rutas para Experience
 router.post(
 	'/',
-	authMiddleware,
-	roleMiddleware('ADMIN'),
+	// authMiddleware,
+	// roleMiddleware('ADMIN'),
 	ExperienceValidator.validateExperience,
 	ExperienceController.create
 );

@@ -15,12 +15,17 @@ const experienceSchema = Joi.object({
 		'number.positive': 'El precio debe ser un número positivo',
 		'any.required': 'El precio es obligatorio'
 	}),
-	duration: Joi.number().integer().positive().required().messages({
-		'number.base': 'La duración debe ser un número',
-		'number.integer': 'La duración debe ser un número entero',
-		'number.positive': 'La duración debe ser un número positivo',
-		'any.required': 'La duración es obligatoria'
-	}),
+	duration: Joi.number()
+		.integer(false)
+		.precision(1)
+		.positive()
+		.optional()
+		.messages({
+			'number.base': 'La duración debe ser un número',
+			'number.integer': 'La duración debe ser un número entero',
+			'number.positive': 'La duración debe ser un número positivo',
+			'any.required': 'La duración es obligatoria'
+		}),
 	dateTo: Joi.date().required().messages({
 		'date.base': 'La fecha de fin debe ser una fecha válida',
 		'any.required': 'La fecha de fin es obligatoria'
@@ -49,16 +54,11 @@ const experienceSchema = Joi.object({
 		'boolean.base': 'La disponibilidad debe ser un valor booleano',
 		'any.required': 'La disponibilidad es obligatoria'
 	}),
-	category: Joi.string().required().messages({
-		'string.empty': 'La categoría es obligatoria',
-		'any.required': 'La categoría es obligatoria'
+	category_id: Joi.number().integer().optional().messages({
+		'string.empty': 'La categoría no puede estar vacía'
 	}),
 	image: Joi.string().optional().messages({
 		'string.base': 'La imagen debe ser una cadena de texto'
-	}),
-	user_id: Joi.string().required().messages({
-		'string.empty': 'El ID del usuario es obligatorio',
-		'any.required': 'El ID del usuario es obligatorio'
 	})
 });
 
@@ -101,31 +101,34 @@ const updateExperienceSchema = Joi.object({
 	availability: Joi.boolean().optional().messages({
 		'boolean.base': 'La disponibilidad debe ser un valor booleano'
 	}),
-	category: Joi.string().optional().messages({
+	category_id: Joi.number().integer().optional().messages({
 		'string.empty': 'La categoría no puede estar vacía'
 	}),
 	image: Joi.string().optional().messages({
 		'string.base': 'La imagen debe ser una cadena de texto'
-	}),
-	user_id: Joi.string().optional().messages({
-		'string.empty': 'El ID del usuario no puede estar vacío'
 	})
 });
 
 // Middleware para validar la creación de una experiencia
 const validateExperience = (req, res, next) => {
-	const { error } = experienceSchema.validateAsync(req.body, {
-		abortEarly: false
-	});
-	if (error) {
-		return res.status(400).json({
-			errors: error.details.map((err) => ({
-				field: err.context.key,
-				message: err.message
-			}))
+	try {
+		const { error } = experienceSchema.validateAsync(req.body, {
+			abortEarly: false
 		});
+		if (error) {
+			return res.status(400).json({
+				errors: error.details.map((err) => ({
+					field: err.context.key,
+					message: err.message
+				})),
+				body: false
+			});
+		}
+		next();
+	} catch (error) {
+		console.log(error);
+		next(error);
 	}
-	next();
 };
 
 // Middleware para validar la actualización de una experiencia

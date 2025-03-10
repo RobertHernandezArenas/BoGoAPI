@@ -8,7 +8,16 @@ const UserRoutes = require('./UserRoutes');
 
 const AppRouter = express.Router();
 
-AppRouter.use('/v1/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDOC))
+AppRouter
+
+	/* 	.use('/', (request, response) => {
+	response.status(200).send({
+		error: false,
+		data: { message: 'Welcome to Book&Go API, go to: /v1/documentation' }
+	});
+}) */
+
+	.use('/v1/documentation', swaggerUI.serve, swaggerUI.setup(swaggerDOC))
 
 	.use('/v1/categories', CategoryRoutes)
 
