@@ -1,4 +1,3 @@
-const path = require('path');
 const CategoryModel = require('./src/infrastructure/models/CategoryModel');
 const ExperienceModel = require('./src/infrastructure/models/ExperienceModel');
 const UserModel = require('./src/infrastructure/models/UserModel');
