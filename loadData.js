@@ -3,7 +3,6 @@ const CategoryModel = require('./src/infrastructure/models/CategoryModel');
 const ExperienceModel = require('./src/infrastructure/models/ExperienceModel');
 const UserModel = require('./src/infrastructure/models/UserModel');
 const { pluguinAdapters } = require('./src/utils/plugins');
-const { envs } = require('./src/config/envs');
 
 (async function() {
 	await UserModel.sync({ alter: true });
@@ -723,56 +722,56 @@ const { envs } = require('./src/config/envs');
 		{
 			id: 1,
 			name: 'Gastronomía',
-			image: `https://${path.join(envs.SERVER, 'image/category/gastronomy.jpg')}`,
+			image: '/image/category/gastronomy.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 2,
 			name: 'Relax',
-			image: `https://${path.join(envs.SERVER, 'image/category/relax.jpg')}`,
+			image: '/image/category/relax.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 3,
 			name: 'Deportes',
-			image: `https://${path.join(envs.SERVER, 'image/category/sports.jpg')}`,
+			image: '/image/category/sports.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 4,
 			name: 'Aventura',
-			image: `https://${path.join(envs.SERVER, 'image/category/adventure.jpg')}`,
+			image: '/image/category/adventure.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 5,
 			name: 'Cultura',
-			image: `https://${path.join(envs.SERVER, 'image/category/culture.jpg')}`,
+			image: '/image/category/culture.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 6,
 			name: 'Vida Nocturna',
-			image: `https://${path.join(envs.SERVER, 'image/category/nightlife.jpg')}`,
+			image: '/image/category/nightlife.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 7,
 			name: 'Musica',
-			image: `https://${path.join(envs.SERVER, 'image/category/music.jpg')}`,
+			image: '/image/category/music.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		},
 		{
 			id: 8,
 			name: 'Gaming',
-			image: `https://${path.join(envs.SERVER, 'image/category/gaming.jpg')}`,
+			image: '/image/category/gaming.jpg',
 			createdAt: new Date(),
 			updatedAt: null
 		}
@@ -1670,5 +1669,3 @@ const { envs } = require('./src/config/envs');
 		await ExperienceModel.upsert(experience);
 	}
 })();
-
-
