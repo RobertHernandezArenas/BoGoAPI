@@ -17,12 +17,12 @@ router.post(
 
 router.get('/', /* authMiddleware, */ ExperienceController.getAll);
 
-router.get('/:id', authMiddleware, ExperienceController.getById);
+router.get('/:id', /* authMiddleware ,*/ ExperienceController.getById);
 
 router.put(
 	'/:id',
-	authMiddleware,
-	roleMiddleware('ADMIN'),
+	// authMiddleware,
+	// roleMiddleware('ADMIN'),
 	ExperienceValidator.validateUpdateExperience,
 	ExperienceController.update
 );

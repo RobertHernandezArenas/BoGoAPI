@@ -43,8 +43,12 @@ class ExperienceController {
 			const experience = await experienceService.getExperienceById(
 				req.params.id
 			);
+
+			console.log(experience, req);
 			if (!experience)
-				return res.status(404).json({ error: 'Experience not found' });
+				return res
+					.status(404)
+					.json({ error: 'Experience not found', data: false });
 			const experienceDTO = new ExperienceDTO(experience);
 			res.status(200).json({
 				error: false,
