@@ -109,24 +109,63 @@ const updateExperienceSchema = Joi.object({
 	})
 });
 
+const validateCreateUserData = async (request, response, next) => {
+	try {
+		let result = userSchemaCreate.validate(request.body, {
+			abortEarly: false
+		});
+
+		if (!result.error) {
+			return next();
+		} else {
+			const validationErrors = result.error.details.map((error) => ({
+				errorName: error.message
+			}));
+
+			return await response.status(400).json({
+				status: 400,
+				body: false,
+				error: validationErrors
+			});
+		}
+	} catch (error) {
+		logger.info('[MIDDLEWARE SCHEMA ERROR]:::>', error);
+		next(error);
+	}
+};
+
 // Middleware para validar la creación de una experiencia
 const validateExperience = (req, res, next) => {
 	try {
 		const { error } = experienceSchema.validateAsync(req.body, {
 			abortEarly: false
 		});
-		if (error) {
+
+		if (!error) {
+			return next();
+		}
+		else {
 			return res.status(400).json({
 				errors: error.details.map((err) => ({
-					field: err.context.key,
+					field: err.context.key + 'caca de la vaca ',
 					message: err.message
 				})),
 				data: false
 			});
 		}
-		next();
+
+		/*
+		if (error) {
+			return res.status(400).json({
+				errors: error.details.map((err) => ({
+					field: err.context.key + 'caca de la vaca ',
+					message: err.message
+				})),
+				data: false
+			});
+		}
+			*/
 	} catch (error) {
-		console.log(error);
 		next(error);
 	}
 };

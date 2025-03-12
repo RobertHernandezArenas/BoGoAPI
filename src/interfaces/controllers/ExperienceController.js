@@ -1,12 +1,14 @@
 const ExperienceDTO = require('../../domain/dtos/ExperienceDTO');
 const ExperienceService = require('../../domain/services/ExperienceService');
+const CategoryModel = require('../../infrastructure/models/CategoryModel');
 const ExperienceRepositoryImpl = require('../../infrastructure/repositories/ExperienceRepositoryImpl');
+const Sequelize = require('sequelize');
 
 const experienceRepository = new ExperienceRepositoryImpl();
 const experienceService = new ExperienceService(experienceRepository);
 
 class ExperienceController {
-	async create(req, res) {
+	async create(req, res, next) {
 		try {
 			const experienceDTO = new ExperienceDTO(req.body);
 			const experience =
@@ -16,13 +18,30 @@ class ExperienceController {
 				data: experience
 			});
 		} catch (error) {
-			res.status(500).json({ error: error.message, data: false });
+			next(error);
 		}
 	}
 
 	async getAll(req, res) {
 		try {
-			const experiences = await experienceService.getAllExperiences();
+			const experiences = await experienceService.getAllExperiences({
+				attributes: [
+					['id', 'experience_id'],
+					['name', 'experience_name'],
+					['description', 'experience_description'],
+					['image', 'experience_image'],
+					[Sequelize.literal('`Category`.`name`'), 'categories_name'], // Alias para nombre de categoría
+					[Sequelize.literal('`Category`.`image`'), 'categories_image'] // Alias para imagen de categoría
+				],
+				include: [
+					{
+						model: CategoryModel,
+						as: 'Category', // Nombre de la relación definida en el modelo
+						attributes: [] // Excluir atributos redundantes de Category
+					}
+				]
+			});
+			console.log(experiences);
 			const experienceDTOs = experiences.map(
 				(experience) => new ExperienceDTO(experience)
 			);

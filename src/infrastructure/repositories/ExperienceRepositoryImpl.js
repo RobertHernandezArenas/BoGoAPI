@@ -1,5 +1,7 @@
 const ExperienceModels = require('../models/ExperienceModel');
 const ExperienceEntity = require('../../domain/entities/ExperienceEntity');
+const CategoryModel = require('../models/CategoryModel');
+const Sequelize = require('sequelize');
 
 class ExperienceRepositoryImpl {
 	async create(experienceEntity) {

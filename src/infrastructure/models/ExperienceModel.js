@@ -24,10 +24,9 @@ const ExperienceModel = sequelize.define(
 		category_id: {
 			type: DataTypes.INTEGER,
 			references: {
-				model: CategoryModel,
+				model: config.envs.DATABASE.TABLES.CATEGORIES,
 				key: 'id'
-			}
-		},
+			}},
 		image: { type: DataTypes.STRING },
 		user_id: {
 			type: DataTypes.STRING,
@@ -46,7 +45,11 @@ const ExperienceModel = sequelize.define(
 ExperienceModel.belongsTo(UserModel, { foreignKey: USER_RELATION_KEY });
 UserModel.hasMany(ExperienceModel, { foreignKey: USER_RELATION_KEY });
 
-ExperienceModel.belongsTo(CategoryModel, { foreignKey: CATEGORY_RELATION_KEY });
+ExperienceModel.belongsTo(CategoryModel, {
+	foreignKey: 'category_id',
+	as: 'Category'
+});
 CategoryModel.hasMany(ExperienceModel, { foreignKey: CATEGORY_RELATION_KEY });
+
 
 module.exports = ExperienceModel;

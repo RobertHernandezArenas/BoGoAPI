@@ -2,7 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
-const path = require('path');
+require('../loadData');
 
 // IMPORTS
 const sequelize = require('./config/database/mysql/sequelize');
@@ -31,6 +31,7 @@ app
 	.listen(PORT, () => {
 		try {
 			sequelize.sync();
+			loadData();
 			logger.log('Connection has been established successfully.');
 			logger.log('Server is running at http://localhost:' + PORT);
 		} catch (error) {
