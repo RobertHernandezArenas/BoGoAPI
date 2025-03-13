@@ -24,24 +24,8 @@ class ExperienceController {
 
 	async getAll(req, res) {
 		try {
-			const experiences = await experienceService.getAllExperiences({
-				attributes: [
-					['id', 'experience_id'],
-					['name', 'experience_name'],
-					['description', 'experience_description'],
-					['image', 'experience_image'],
-					[Sequelize.literal('`Category`.`name`'), 'categories_name'], // Alias para nombre de categoría
-					[Sequelize.literal('`Category`.`image`'), 'categories_image'] // Alias para imagen de categoría
-				],
-				include: [
-					{
-						model: CategoryModel,
-						as: 'Category', // Nombre de la relación definida en el modelo
-						attributes: [] // Excluir atributos redundantes de Category
-					}
-				]
-			});
-			console.log(experiences);
+			const experiences = await experienceService.getAllExperiences();
+			
 			const experienceDTOs = experiences.map(
 				(experience) => new ExperienceDTO(experience)
 			);

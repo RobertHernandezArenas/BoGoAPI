@@ -1,5 +1,4 @@
-const ExperienceEntity = require("../entities/ExperienceEntity");
-
+const ExperienceEntity = require('../entities/ExperienceEntity');
 
 class ExperienceService {
 	constructor(experienceRepository) {

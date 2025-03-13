@@ -26,7 +26,10 @@ const ExperienceModel = sequelize.define(
 			references: {
 				model: config.envs.DATABASE.TABLES.CATEGORIES,
 				key: 'id'
-			}},
+			}
+		},
+		category_name: { type: DataTypes.STRING },
+		category_image: { type: DataTypes.STRING },
 		image: { type: DataTypes.STRING },
 		user_id: {
 			type: DataTypes.STRING,
