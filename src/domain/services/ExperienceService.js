@@ -14,6 +14,10 @@ class ExperienceService {
 		return await this.experienceRepository.findAll();
 	}
 
+	async getCategoriesAvailablesbyExperience() {
+		return await this.experienceRepository.getCategoriesAvailablesbyExperience();
+	}
+
 	async getExperienceById(id) {
 		return await this.experienceRepository.findById(id);
 	}

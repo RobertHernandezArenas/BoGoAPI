@@ -12,15 +12,15 @@
 	},
 	"license": "MIT",
 	"author": "Robert Hernandez Arenas",
-	"type": "commonjs",
+	"type": "module",
 	"main": "app.js",
 	"scripts": {
 		"build": "rimraf lib && babel src --out-dir lib && node ./copyScript.js",
-		"dev": "npm run build && nodemon --env-file=.env.development ./lib/app.js",
+		"dev": "node --env-file=.env ./src/app.js",
 		"lint": "eslint src/**/*.js --fix",
 		"format": "prettier src/**/*.js --write",
 		"db": "node ./loadData.js",
-		"start": "node --env-file=.env ./src/app.js"
+		"start": "nodemon --env-file=.env ./src/app.js"
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.21.0",
@@ -47,6 +47,7 @@
 		"morgan": "^1.10.0",
 		"mysql2": "^3.10.2",
 		"sequelize": "^6.37.3",
+		"stripe": "^17.7.0",
 		"swagger-jsdoc": "^6.2.8",
 		"swagger-ui-express": "^5.0.1",
 		"winston": "^3.13.0"

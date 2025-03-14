@@ -769,7 +769,7 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 		},
 		{
 			id: 8,
-			name: 'Gaming',
+			name: 'Videojuegos',
 			image: '/images/category/gaming.jpg',
 			createdAt: new Date(),
 			updatedAt: null
@@ -792,6 +792,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 5,
 			availability: true,
 			category_id: 1,
+			category_name: 'Gastronomía',
+			category_image: '/images/category/gastronomy.jpg',
 			image:
 				'https://lh3.googleusercontent.com/p/AF1QipO95tEFDDA6x4e6QGNF6ONRRrWe-6tmTqGxBvEl=s680-w680-h510',
 			userId: 'admin#1',
@@ -813,6 +815,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 			userId: 'admin#1',
@@ -834,6 +838,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 25,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.unsplash.com/photo-1587216829015-3e15edf56137?q=80&w=2076&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
 			userId: 'admin#1',
@@ -855,6 +861,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 10,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image:
 				'https://buendia-pro-app.s3.eu-west-3.amazonaws.com/s3fs-public/2024-12/excursion-picos-europa-desde-oviedo.jpg?VersionId=Z9n104HK1b9cx71AZUyr2GXgWcRSv73q',
 			userId: 'admin#1',
@@ -876,6 +884,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image: 'https://aventuratoursalou.com/images/20200526_141824.jpg',
 			userId: 'admin#1',
 			isFavorite: false,
@@ -896,6 +906,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 500,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://www.fcbarcelona.com/photo-resources/2021/08/09/c4f2dddd-2152-4b8b-acf8-826b4377e29d/Camp-Nou-4.jpg?width=3200&height=2000',
 			userId: 'admin#1',
@@ -917,6 +929,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://media-cdn.tripadvisor.com/media/photo-s/12/64/d6/9d/escalada-en-margalef.jpg',
 			userId: 'admin#1',
@@ -939,6 +953,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 40,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://content3.cdnprado.net/imagenes/Documentos/imgsem/c9/c928/c9284595-b7c7-ff6b-92bf-b42cbea3ffdb/5612ce87-ade3-78f4-0baa-b9df91dc7269.jpg',
 			userId: 'admin#1',
@@ -959,6 +975,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://media.tacdn.com/media/attractions-splice-spp-674x446/12/7b/d2/81.jpg',
 			userId: 'admin#1',
@@ -980,6 +998,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 80,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://fotografias.larazon.es/clipping/cmsimages02/2022/11/22/8287004F-0C2D-4C4A-BC07-303CB88869FE/98.jpg?crop=3000,1688,x0,y156&width=1900&height=1069&optimize=low&format=webply',
 			userId: 'admin#1',
@@ -1000,6 +1020,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 40,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1022,6 +1044,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 150,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1043,6 +1067,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 5000,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1068,6 +1094,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 1,
+			category_name: 'Gastronomía',
+			category_image: '/images/category/gastronomy.jpg',
 			image:
 				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1089,6 +1117,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 1,
+			category_name: 'Gastronomía',
+			category_image: '/images/category/gastronomy.jpg',
 			image:
 				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1111,6 +1141,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1131,6 +1163,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 25,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.unsplash.com/photo-1570849370777-36a1e50631e3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1154,6 +1188,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 12,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image:
 				'https://images.unsplash.com/photo-1560759609-14828734a0ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1175,6 +1211,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 20,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image:
 				'https://images.pexels.com/photos/1055083/pexels-photo-1055083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1197,6 +1235,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://images.unsplash.com/photo-1597645587534-5b018daa754b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1218,6 +1258,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 6,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://images.pexels.com/photos/1388513/pexels-photo-1388513.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1241,6 +1283,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 40,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1261,6 +1305,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 10,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1284,6 +1330,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1304,6 +1352,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 25,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://images.pexels.com/photos/356002/pexels-photo-356002.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1327,6 +1377,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 120,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			createdAt: new Date(),
@@ -1348,6 +1400,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 40,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			createdAt: new Date(),
@@ -1368,6 +1422,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 12,
 			availability: true,
 			category_id: 1,
+			category_name: 'Gastronomía',
+			category_image: '/images/category/gastronomy.jpg',
 			image:
 				'https://images.unsplash.com/photo-1560487489-0926f7b94a4b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1388,6 +1444,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 20,
 			availability: true,
 			category_id: 1,
+			category_name: 'Gastronomía',
+			category_image: '/images/category/gastronomy.jpg',
 			image:
 				'https://images.pexels.com/photos/109272/pexels-photo-109272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1410,6 +1468,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.unsplash.com/photo-1523275335684-378c8e4c465b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1431,6 +1491,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 2,
+			category_name: 'Relax',
+			category_image: '/images/category/relax.jpg',
 			image:
 				'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1454,6 +1516,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 10,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image:
 				'https://images.unsplash.com/photo-1509630049375-64c3de919cbe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1475,6 +1539,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 4,
+			category_name: 'Aventura',
+			category_image: '/images/category/adventures.jpg',
 			image:
 				'https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1497,6 +1563,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 12,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1517,6 +1585,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 1000,
 			availability: true,
 			category_id: 3,
+			category_name: 'Deportes',
+			category_image: '/images/category/sports.jpg',
 			image:
 				'https://images.unsplash.com/photo-1589334434630-1b0c9f6041a1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1539,6 +1609,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 40,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://images.unsplash.com/photo-1557682954-a0454f8cb1d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1560,6 +1632,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 8,
 			availability: true,
 			category_id: 5,
+			category_name: 'Cultura',
+			category_image: '/images/category/culture.jpg',
 			image:
 				'https://images.pexels.com/photos/1194195/pexels-photo-1194195.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1582,6 +1656,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 15,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://images.unsplash.com/photo-1522364724200-94943f734c3f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1603,6 +1679,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 25,
 			availability: true,
 			category_id: 8,
+			category_name: 'Videojuegos',
+			category_image: '/images/category/gaming.jpg',
 			image:
 				'https://images.pexels.com/photos/356003/pexels-photo-356003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',
@@ -1626,6 +1704,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 150,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.unsplash.com/photo-1542744173-947020f897f0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
 			userId: 'admin#1',
@@ -1646,6 +1726,8 @@ const { pluguinAdapters } = require('./src/utils/plugins');
 			stock: 25,
 			availability: true,
 			category_id: 7,
+			category_name: 'Música',
+			category_image: '/images/category/music.jpg',
 			image:
 				'https://images.pexels.com/photos/270012/pexels-photo-270012.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
 			userId: 'admin#1',

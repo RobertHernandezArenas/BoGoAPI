@@ -1,7 +1,9 @@
-require('dotenv').config();
-const { get } = require('env-var');
+import envVar from 'env-var';
+import 'dotenv/config';
 
-const envs = {
+const { get } = envVar;
+
+export const CONSTANTS = {
 	PORT: get('PORT').required().asPortNumber(),
 	HOST: get('HOST').default('localhost').asString(),
 	SERVER: get('SERVER').default('https://apieverywhere.com').asString(),
@@ -42,7 +44,9 @@ const envs = {
 	GOOGLE: {
 		CLIENT_ID: get('GOOGLE_CLIENT_ID').asString(),
 		CLIENT_SECRET: get('GOOGLE_CLIENT_SECRET').asString()
+	},
+	STRIPE: {
+		SECRET_KEY_DEMO: get('STRIPE_SECRET_KEY_DEMO').asString(),
+		SECRET_KEY: get('STRIPE_SECRET_KEY').asString()
 	}
 };
-
-module.exports = { envs };

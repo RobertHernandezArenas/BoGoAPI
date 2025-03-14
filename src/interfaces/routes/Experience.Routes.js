@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const ExperienceController = require('../controllers/ExperienceController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
@@ -15,9 +15,14 @@ router.post(
 	ExperienceController.create
 );
 
-router.get('/', /* authMiddleware, */ ExperienceController.getAll);
+router.get('/', ExperienceController.getAll);
 
-router.get('/:id', /* authMiddleware ,*/ ExperienceController.getById);
+router.get(
+	'/categories',
+	 ExperienceController.getCategoriesAvailablesbyExperience
+);
+
+router.get('/:id' ExperienceController.getById);
 
 router.put(
 	'/:id',
@@ -35,3 +40,5 @@ router.delete(
 );
 
 module.exports = router;
+
+*/

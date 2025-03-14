@@ -1,8 +1,10 @@
 const ExperienceDTO = require('../../domain/dtos/ExperienceDTO');
 const ExperienceService = require('../../domain/services/ExperienceService');
+const CategoryDTO = require('../../domain/dtos/CategoryDTO');
 const CategoryModel = require('../../infrastructure/models/CategoryModel');
-const ExperienceRepositoryImpl = require('../../infrastructure/repositories/ExperienceRepositoryImpl');
 const Sequelize = require('sequelize');
+const ExperienceRepositoryImpl = require('../../infrastructure/repositories/ExperienceRepositoryImpl');
+const ExperienceModel = require('../../infrastructure/models/ExperienceModel');
 
 const experienceRepository = new ExperienceRepositoryImpl();
 const experienceService = new ExperienceService(experienceRepository);
@@ -25,13 +27,35 @@ class ExperienceController {
 	async getAll(req, res) {
 		try {
 			const experiences = await experienceService.getAllExperiences();
-			
+
 			const experienceDTOs = experiences.map(
 				(experience) => new ExperienceDTO(experience)
 			);
 			res.status(200).json({
 				error: false,
 				data: experienceDTOs
+			});
+		} catch (error) {
+			res.status(500).json({
+				error: error.message,
+				data: false
+			});
+		}
+	}
+
+	async getCategoriesAvailablesbyExperience(req, res) {
+		try {
+			const categories =
+				await experienceService.getCategoriesAvailablesbyExperience();
+			console.log(categories);
+
+			const categoryDTOs = categories.map(
+				(category) => new CategoryDTO(category)
+			);
+
+			res.status(200).json({
+				error: false,
+				data: categoryDTOs
 			});
 		} catch (error) {
 			res.status(500).json({

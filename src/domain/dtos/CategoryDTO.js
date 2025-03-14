@@ -1,4 +1,4 @@
-class CategoryDTO {
+export class CategoryDTO {
 	constructor({
 		id,
 		name,
@@ -13,5 +13,3 @@ class CategoryDTO {
 		this.updatedAt = updatedAt;
 	}
 }
-
-module.exports = CategoryDTO;

@@ -1,7 +1,7 @@
-const Joi = require('joi');
+import Joi from 'joi';
 
 // Esquema de validación para la creación de una experiencia
-const experienceSchema = Joi.object({
+export const experienceSchema = Joi.object({
 	name: Joi.string().required().messages({
 		'string.empty': 'El nombre es obligatorio',
 		'any.required': 'El nombre es obligatorio'
@@ -63,7 +63,7 @@ const experienceSchema = Joi.object({
 });
 
 // Esquema de validación para la actualización de una experiencia
-const updateExperienceSchema = Joi.object({
+export const updateExperienceSchema = Joi.object({
 	name: Joi.string().optional().messages({
 		'string.empty': 'El nombre no puede estar vacío'
 	}),
@@ -109,33 +109,9 @@ const updateExperienceSchema = Joi.object({
 	})
 });
 
-const validateCreateUserData = async (request, response, next) => {
-	try {
-		let result = userSchemaCreate.validate(request.body, {
-			abortEarly: false
-		});
-
-		if (!result.error) {
-			return next();
-		} else {
-			const validationErrors = result.error.details.map((error) => ({
-				errorName: error.message
-			}));
-
-			return await response.status(400).json({
-				status: 400,
-				body: false,
-				error: validationErrors
-			});
-		}
-	} catch (error) {
-		logger.info('[MIDDLEWARE SCHEMA ERROR]:::>', error);
-		next(error);
-	}
-};
 
 // Middleware para validar la creación de una experiencia
-const validateExperience = (req, res, next) => {
+export const validateExperience = (req, res, next) => {
 	try {
 		const { error } = experienceSchema.validateAsync(req.body, {
 			abortEarly: false
@@ -143,8 +119,7 @@ const validateExperience = (req, res, next) => {
 
 		if (!error) {
 			return next();
-		}
-		else {
+		} else {
 			return res.status(400).json({
 				errors: error.details.map((err) => ({
 					field: err.context.key + 'caca de la vaca ',
@@ -153,25 +128,13 @@ const validateExperience = (req, res, next) => {
 				data: false
 			});
 		}
-
-		/*
-		if (error) {
-			return res.status(400).json({
-				errors: error.details.map((err) => ({
-					field: err.context.key + 'caca de la vaca ',
-					message: err.message
-				})),
-				data: false
-			});
-		}
-			*/
 	} catch (error) {
 		next(error);
 	}
 };
 
 // Middleware para validar la actualización de una experiencia
-const validateUpdateExperience = (req, res, next) => {
+export const validateUpdateExperience = (req, res, next) => {
 	const { error } = updateExperienceSchema.validateAsync(req.body, {
 		abortEarly: false
 	});
@@ -186,9 +149,3 @@ const validateUpdateExperience = (req, res, next) => {
 	next();
 };
 
-module.exports = {
-	experienceSchema,
-	updateExperienceSchema,
-	validateExperience,
-	validateUpdateExperience
-};

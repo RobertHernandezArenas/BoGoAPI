@@ -44,15 +44,4 @@ const ExperienceModel = sequelize.define(
 	}
 );
 
-// Relación
-ExperienceModel.belongsTo(UserModel, { foreignKey: USER_RELATION_KEY });
-UserModel.hasMany(ExperienceModel, { foreignKey: USER_RELATION_KEY });
-
-ExperienceModel.belongsTo(CategoryModel, {
-	foreignKey: 'category_id',
-	as: 'Category'
-});
-CategoryModel.hasMany(ExperienceModel, { foreignKey: CATEGORY_RELATION_KEY });
-
-
 module.exports = ExperienceModel;

@@ -1,4 +1,4 @@
-class ExperienceDTO {
+export class ExperienceDTO {
 	constructor({
 		id,
 		name,
@@ -12,8 +12,7 @@ class ExperienceDTO {
 		stock,
 		availability,
 		category_id,
-		category_name,
-		category_image,
+		reviews,
 		image,
 		user_id,
 		isFavorite,
@@ -32,8 +31,7 @@ class ExperienceDTO {
 		this.stock = stock;
 		this.availability = availability;
 		this.category_id = category_id;
-		this.category_name = category_name;
-		this.category_image = category_image;
+		this.reviews = reviews;
 		this.image = image;
 		this.user_id = user_id;
 		this.isFavorite = isFavorite;
@@ -41,5 +39,3 @@ class ExperienceDTO {
 		this.updatedAt = updatedAt;
 	}
 }
-
-module.exports = ExperienceDTO;

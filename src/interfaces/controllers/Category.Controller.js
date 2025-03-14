@@ -1,16 +1,18 @@
-const CategoryDTO = require('../../domain/dtos/CategoryDTO');
+import { CategoryDTO } from '../../domain/dtos/CategoryDTO.js';
+/*
 const CategoryService = require('../../domain/services/CategoryService');
+const ExperienceModel = require('../../infrastructure/models/ExperienceModel');
 const CategoryRepositoryImpl = require('../../infrastructure/repositories/CategoryRepositoryImpl');
 
 const categoryRepository = new CategoryRepositoryImpl();
 const categoryService = new CategoryService(categoryRepository);
+*/
 
-class CategoryController {
+export class CategoryController {
 	async create(req, res) {
 		try {
 			const categoriesDTO = new CategoryDTO(req.body);
-			const categories =
-				await categoryService.createCategories(categoriesDTO);
+			const categories = await categoryService.createCategories(categoriesDTO);
 			res.status(201).json(categories);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
@@ -35,11 +37,29 @@ class CategoryController {
 		}
 	}
 
+	async getCategoriesAvailablesbyExperience(req, res) {
+		try {
+			const categories =
+				await categoryService.getCategoriesAvailablesbyExperience();
+			console.log(categories);
+			const categoriesDTOs = categories.map(
+				(categories) => new CategoryDTO(categories)
+			);
+			res.status(200).json({
+				error: false,
+				data: categoriesDTOs
+			});
+		} catch (error) {
+			res.status(500).json({
+				error: error.message,
+				data: false
+			});
+		}
+	}
+
 	async getById(req, res) {
 		try {
-			const categories = await categoryService.getCategoryById(
-				req.params.id
-			);
+			const categories = await categoryService.getCategoryById(req.params.id);
 			if (!categories)
 				return res.status(404).json({ error: 'categories not found' });
 			const categoriesDTO = new CategoryDTO(categories);
@@ -72,4 +92,4 @@ class CategoryController {
 	}
 }
 
-module.exports = new CategoryController();
+export const categoryController = new CategoryController();

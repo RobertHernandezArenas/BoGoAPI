@@ -15,6 +15,10 @@ class CategoryService {
 		return await this.categoryRepository.findAll();
 	}
 
+	async getCategoriesAvailablesbyExperience() {
+		return await this.categoryRepository.getCategoriesAvailablesbyExperience();
+	}
+
 	async getCategoryById(id) {
 		return await this.categoryRepository.findById(id);
 	}

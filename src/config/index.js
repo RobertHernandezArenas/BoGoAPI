@@ -1,7 +1,5 @@
-const { envs } = require('./envs');
+import { CONSTANTS } from './envs.js';
 
-const config = {
-	envs
+export const AppConfig = {
+	CONSTANTS
 };
-
-module.exports = config;

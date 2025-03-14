@@ -1,12 +1,13 @@
 // router.post('/login', UserController.login);
 // router.get('/', authMiddleware, UserController.getAll);
-const express = require('express');
+/* const express = require('express');
 const UserController = require('../controllers/UserController');
 const authMiddleware = require('../middlewares/authMiddleware');
 const roleMiddleware = require('../middlewares/roleMiddleware');
 const UserValidator = require('../middlewares/validators/UserValidator');
 
 const UserRoutes = express.Router();
+*/
 
 /**
  * @openapi
@@ -108,7 +109,7 @@ const UserRoutes = express.Router();
  *       500:
  *         description: Some server error
  */
-UserRoutes.post('/users', UserValidator.validateUser, UserController.create);
+// UserRoutes.post('/users', UserValidator.validateUser, UserController.create);
 
 
 /**
@@ -133,9 +134,9 @@ UserRoutes.post('/users', UserValidator.validateUser, UserController.create);
  *       500:
  *         description: Some server error
  */
-UserRoutes.get('/users/:id', authMiddleware, UserController.getById);
+// UserRoutes.get('/users/:id', authMiddleware, UserController.getById);
 
-UserRoutes.put(
+/* UserRoutes.put(
 	'/users/:id',
 	authMiddleware,
 	UserValidator.validateUpdateUser,
@@ -150,3 +151,4 @@ UserRoutes.delete(
 );
 
 module.exports = UserRoutes;
+*/

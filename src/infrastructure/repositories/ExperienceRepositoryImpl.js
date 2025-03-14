@@ -1,7 +1,8 @@
 const ExperienceModel = require('../models/ExperienceModel');
 const ExperienceEntity = require('../../domain/entities/ExperienceEntity');
 const CategoryModel = require('../models/CategoryModel');
-const Sequelize = require('sequelize');
+const CategoryEntity = require('../../domain/entities/CategoryEntity');
+const { Sequelize } = require('sequelize');
 
 class ExperienceRepositoryImpl {
 	async create(experienceEntity) {
@@ -10,7 +11,8 @@ class ExperienceRepositoryImpl {
 	}
 
 	async findAll() {
-		const experiences = await ExperienceModel.findAll({
+		const experiences =
+			await ExperienceModel.findAll(/*{
 			attributes: [
 				'id',
 				'name',
@@ -38,7 +40,7 @@ class ExperienceRepositoryImpl {
 					attributes: [] // Excluir atributos redundantes de Category
 				}
 			]
-		});
+		}*/);
 		return experiences.map((exp) => new ExperienceEntity(exp));
 	}
 

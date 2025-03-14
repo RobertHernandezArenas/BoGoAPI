@@ -1,7 +1,7 @@
-const config = require('../../index');
-const { Sequelize } = require('sequelize');
+import config from '../../index';
+import { Sequelize } from 'sequelize';
 
-const sequelize = new Sequelize(
+export const sequelize = new Sequelize(
 	config.envs.DATABASE.MYSQL.DB_NAME,
 	config.envs.DATABASE.MYSQL.USERNAME,
 	config.envs.DATABASE.MYSQL.PASSWORD,
@@ -20,5 +20,3 @@ const sequelize = new Sequelize(
 		}
 	}
 );
-
-module.exports = sequelize;

@@ -1,5 +1,5 @@
-const swaggerJsDoc = require('swagger-jsdoc');
-const config = require('../../config');
+import swaggerJsDoc from 'swagger-jsdoc';
+import { AppConfig } from '../../config/index.js';
 
 const swaggerDefinitions = {
 	definition: {
@@ -19,11 +19,11 @@ const swaggerDefinitions = {
 		},
 		servers: [
 			{
-				url: `http://localhost:${config.envs.PORT}`,
+				url: `http://localhost:${AppConfig.CONSTANTS.PORT}`,
 				description: 'Local Server'
 			},
 			{
-				url: `https://${config.envs.SERVER}`,
+				url: `https://${AppConfig.CONSTANTS.SERVER}`,
 				description: 'API Everywhere Server'
 			}
 		]
@@ -31,6 +31,4 @@ const swaggerDefinitions = {
 	apis: ['./src/interfaces/routes/*.js']
 };
 
-const swaggerDOC = swaggerJsDoc(swaggerDefinitions);
-
-module.exports = swaggerDOC;
+export const swaggerDOC = swaggerJsDoc(swaggerDefinitions);

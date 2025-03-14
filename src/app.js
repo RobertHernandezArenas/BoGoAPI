@@ -1,21 +1,15 @@
 // DEPENDENCIES
-const express = require('express');
-const cors = require('cors');
-const morgan = require('morgan');
-require('../loadData');
+import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
+import { AppRouter } from './interfaces/routes/index.Routes.js';
+import { AppConfig } from './config/index.js';
 
 // IMPORTS
-const sequelize = require('./config/database/mysql/sequelize');
-const config = require('./config');
-const AppRouter = require('./interfaces/routes');
-const { buildLogger } = require('./utils/logger');
+export const App = express();
+const PORT = AppConfig.CONSTANTS.PORT || 3000;
 
-const app = express();
-const PORT = config.envs.PORT || 3000;
-const logger = buildLogger('[File Path]: src/app');
-
-app
-	.use(morgan('dev'))
+App.use(morgan('dev'))
 	.use(
 		cors({
 			origin: '*',
@@ -26,17 +20,13 @@ app
 	)
 	.use(express.json())
 	.use(express.urlencoded({ extended: true }))
-	.use(express.static("public"))
+	.use(express.static('public'))
 	.use('/', AppRouter)
+
 	.listen(PORT, () => {
 		try {
-			sequelize.sync();
-			loadData();
-			logger.log('Connection has been established successfully.');
-			logger.log('Server is running at http://localhost:' + PORT);
+			console.log('🟢 Server ON: http://localhost:' + PORT);
 		} catch (error) {
-			console.error('Unable to connect to the database:', error.message);
+			console.error('🔴 Server OFF:', error.message);
 		}
 	});
-
-module.exports = app;
