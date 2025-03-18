@@ -1,13 +1,6 @@
-const ExperienceDTO = require('../../domain/dtos/ExperienceDTO');
-const ExperienceService = require('../../domain/services/ExperienceService');
-const CategoryDTO = require('../../domain/dtos/CategoryDTO');
-const CategoryModel = require('../../infrastructure/models/CategoryModel');
-const Sequelize = require('sequelize');
-const ExperienceRepositoryImpl = require('../../infrastructure/repositories/ExperienceRepositoryImpl');
-const ExperienceModel = require('../../infrastructure/models/ExperienceModel');
-
-const experienceRepository = new ExperienceRepositoryImpl();
-const experienceService = new ExperienceService(experienceRepository);
+import { ExperienceDTO } from '../../domain/dtos/ExperienceDTO.js';
+import { getMySQLConnection } from '../../config/database/mysql/index.js';
+import { CONSTANTS } from '../../config/envs.js';
 
 class ExperienceController {
 	async create(req, res, next) {
@@ -25,61 +18,54 @@ class ExperienceController {
 	}
 
 	async getAll(req, res) {
+		const dbConnection = await getMySQLConnection(
+			CONSTANTS.DATABASE.MYSQL.DB_NAME
+		);
 		try {
-			const experiences = await experienceService.getAllExperiences();
+			const [experiences] = await dbConnection.query(`
+				SELECT
+					exp.*,
+					cat.name AS category_name,
+					cat.image AS category_image
+				FROM experience exp
+				INNER JOIN category cat
+				ON exp.category_id = cat.id;
+				`);
 
-			const experienceDTOs = experiences.map(
-				(experience) => new ExperienceDTO(experience)
-			);
 			res.status(200).json({
 				error: false,
-				data: experienceDTOs
+				data: experiences
 			});
 		} catch (error) {
 			res.status(500).json({
 				error: error.message,
 				data: false
 			});
-		}
-	}
-
-	async getCategoriesAvailablesbyExperience(req, res) {
-		try {
-			const categories =
-				await experienceService.getCategoriesAvailablesbyExperience();
-			console.log(categories);
-
-			const categoryDTOs = categories.map(
-				(category) => new CategoryDTO(category)
-			);
-
-			res.status(200).json({
-				error: false,
-				data: categoryDTOs
-			});
-		} catch (error) {
-			res.status(500).json({
-				error: error.message,
-				data: false
-			});
+		} finally {
+			dbConnection.close();
 		}
 	}
 
 	async getById(req, res) {
+		const dbConnection = await getMySQLConnection(
+			CONSTANTS.DATABASE.MYSQL.DB_NAME
+		);
 		try {
-			const experience = await experienceService.getExperienceById(
-				req.params.id
-			);
+			const { id } = req.query;
+			const [experience] = await dbConnection.query(`
+				SELECT
+					exp.*,
+					cat.name AS category_name,
+					cat.image AS category_image
+				FROM experience exp
+				INNER JOIN category cat
+				ON exp.category_id = cat.id
+				WHERE exp.id=${id}
+				;`);
 
-			console.log(experience, req);
-			if (!experience)
-				return res
-					.status(404)
-					.json({ error: 'Experience not found', data: false });
-			const experienceDTO = new ExperienceDTO(experience);
 			res.status(200).json({
 				error: false,
-				data: experienceDTO
+				data: experience
 			});
 		} catch (error) {
 			res.status(500).json({ error: error.message, data: false });
@@ -112,4 +98,4 @@ class ExperienceController {
 	}
 }
 
-module.exports = new ExperienceController();
+export const experienceController = new ExperienceController();

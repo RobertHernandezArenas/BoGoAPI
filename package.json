@@ -19,7 +19,7 @@
 		"dev": "node --env-file=.env ./src/app.js",
 		"lint": "eslint src/**/*.js --fix",
 		"format": "prettier src/**/*.js --write",
-		"db": "node ./loadData.js",
+		"db": "node initDb.js",
 		"start": "nodemon --env-file=.env ./src/app.js"
 	},
 	"devDependencies": {

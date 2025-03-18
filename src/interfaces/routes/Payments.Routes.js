@@ -6,7 +6,7 @@ import { paymentController } from '../controllers/Payment.Controller.js';
 
 export const PaymentRoutes = Router();
 
-PaymentRoutes.get('/session', paymentController.getSession);
+PaymentRoutes.post('/session', paymentController.getSession);
 
 PaymentRoutes.get('/success', paymentController.getSuccess);
 

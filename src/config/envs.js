@@ -29,12 +29,16 @@ export const CONSTANTS = {
 			POOL_MIN: get('MYSQL_POOL_MIN').default(0).asInt(),
 			PORT: get('MYSQL_PORT').default(3306).asPortNumber(),
 			TIMESTAMPS: get('MYSQL_DEFINE_TIMESTAMPS').default(1).asBool(),
+			TIMEZONE: get('MYSQL_TIMEZONE').default('Z').asString(),
 			USERNAME: get('MYSQL_USERNAME').default('root').asString()
 		},
 		TABLES: {
-			CATEGORIES: get('CATEGORIES_TABLE').default('categories').asString(),
-			EXPERIENCES: get('EXPERIENCES_TABLE').default('experiences').asString(),
-			USERS: get('USERS_TABLE').default('users').asString()
+			CATEGORY: get('CATEGORY_TABLE').default('category').asString(),
+			COMPANY: get('COMPANY_TABLE').default('company').asString(),
+			EXPERIENCE: get('EXPERIENCE_TABLE').default('experience').asString(),
+			NEWSLETTER: get('NEWSLETTER_TABLE').default('newsletter').asString(),
+			REVIEW: get('REVIEW_TABLE').default('review').asString(),
+			USER: get('USER_TABLE').default('user').asString()
 		}
 	},
 	JWT: {

@@ -1,35 +1,56 @@
 import Stripe from 'stripe';
 import { AppConfig } from './../../config/index.js';
+import { ProductItem } from '../../domain/dtos/ProductItem.js';
+import { StripeCheckoutBuilder } from '../../domain/dtos/StripeCheckoutDTO.js';
 
 const stripe = new Stripe(AppConfig.CONSTANTS.STRIPE.SECRET_KEY_DEMO);
 
 export class PaymentController {
+	/**
+	 * Obtiene una sesión de pago de Stripe.
+	 * @param {Object} req - Objeto de solicitud HTTP.
+	 * @param {Object} res - Objeto de respuesta HTTP.
+	 */
 	async getSession(req, res) {
 		try {
-			const session = await stripe.checkout.sessions.create({
-				line_items: [
-					{
-						price_data: {
-							currency: 'eur',
-							product_data: {
-								name: 'T-shirt',
-								description: 'Comfortable cotton t-shirt',
-								images: [
-									'http://localhost:8000/images/gift.gif',
-									'https://plus.unsplash.com/premium_photo-1682050733502-f58b7f499490?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-									'https://plus.unsplash.com/premium_photo-1669357657851-f15e1417ea08?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-									'https://plus.unsplash.com/premium_photo-1669357656838-2255f3882263?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
-								]
-							},
-							unit_amount: 50 // 20€
-						},
-						quantity: 1
-					}
-				],
-				mode: 'payment',
-				success_url: 'http://localhost:8000/success',
-				cancel_url: 'http://localhost:8000/cancel'
+			// Validamos que los productos estén presentes en el cuerpo de la solicitud
+			const { products } = req.body;
+
+			if (!Array.isArray(products) || products.length === 0) {
+				return res.status(400).json({
+					error: true,
+					message:
+						'Se requiere al menos un producto en el cuerpo de la solicitud.'
+				});
+			}
+
+			// Convertimos los productos recibidos en instancias de ProductItem
+			const productItems = products.map((product) => {
+				try {
+					return new ProductItem(
+						product.name,
+						product.description,
+						product.images,
+						product.currency,
+						product.price,
+						product.quantity
+					);
+				} catch (error) {
+					throw new Error(
+						`Error al crear el producto '${product.name}': ${error.message}`
+					);
+				}
 			});
+
+			// Construimos la estructura para Stripe Checkout
+			const stripeCheckout = new StripeCheckoutBuilder()
+				.addProducts(productItems)
+				.setSuccessUrl('http://localhost:8000/success')
+				.setCancelUrl('http://localhost:8000/cancel')
+				.build();
+
+			// Creamos la sesión de pago en Stripe
+			const session = await stripe.checkout.sessions.create(stripeCheckout);
 
 			session.payment_method_types = ['card'];
 
@@ -37,36 +58,44 @@ export class PaymentController {
 				error: false,
 				data: {
 					url: session.url,
-					session,
+					session
 				}
 			});
 		} catch (error) {
-			res.status(500).json({ error: error.message, data: false });
+			console.error('Error en getSession:', error.message);
+			return res.status(500).json({ error: true, message: error.message });
 		}
 	}
 
+	/**
+	 * Maneja la respuesta de éxito del pago.
+	 * @param {Object} req - Objeto de solicitud HTTP.
+	 * @param {Object} res - Objeto de respuesta HTTP.
+	 */
 	async getSuccess(req, res) {
 		try {
-			res.status(200).json({
+			return res.status(200).json({
 				error: false,
-				data: 'Payment success'
+				data: 'Pago exitoso'
 			});
 		} catch (error) {
-			res.status(500).json({
-				error: error.message,
-				data: false
-			});
+			return res.status(500).json({ error: true, message: error.message });
 		}
 	}
 
+	/**
+	 * Maneja la respuesta de cancelación del pago.
+	 * @param {Object} req - Objeto de solicitud HTTP.
+	 * @param {Object} res - Objeto de respuesta HTTP.
+	 */
 	async getCancel(req, res) {
 		try {
-			res.status(200).json({
+			return res.status(200).json({
 				error: false,
-				data: 'Payment cancel'
+				data: 'Pago cancelado'
 			});
 		} catch (error) {
-			res.status(500).json({ error: error.message });
+			return res.status(500).json({ error: true, message: error.message });
 		}
 	}
 }
