@@ -11,6 +11,7 @@ async function createTables(connection) {
             CREATE TABLE IF NOT EXISTS user (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 email VARCHAR(255) NOT NULL UNIQUE,
+				password VARCHAR(255) NOT NULL,
                 name VARCHAR(255) NOT NULL,
                 surname VARCHAR(255),
                 address TEXT,
@@ -204,10 +205,18 @@ async function main() {
 		await dbConnection.query('DROP TABLE IF EXISTS reviews');
 		console.log('🔥 reviews table dropped');
       */
-
-		const users = await dbConnection.query(`
-			INSERT INTO user (id, email, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
-(1, 'admin@example.com', 'Admin', 'User', '123 Admin Street', 'https://randomuser.me/api/portraits/men/75.jpg', '1985-05-15', 'Madrid', 'Spain', '12345678A', 'male', TRUE, '+34123456789', 'admin', '28001');
+		// ------------------- USERS
+		await dbConnection.query(`
+			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
+(1, 'admin@example.com', 123456, 'Admin', 'User', '123 Admin Street', 'https://randomuser.me/api/portraits/men/75.jpg', '1985-05-15', 'Madrid', 'Spain', '12345678A', 'male', TRUE, '+34123456789', 'admin', '28001');
+;`);
+		await dbConnection.query(`
+			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
+(2, 'ana@example.com', 123456, 'Ana', 'Caballero', '123 Admin Street', 'https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg', '1985-05-15', 'VIGO', 'SPAIN', '12345688A', 'FEMALE', TRUE, '+34123456789', 'admin', '36400');
+;`);
+		await dbConnection.query(`
+			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
+(3, 'julian@example.com', 123456, 'Julian', 'Regueira', '123 Admin Street', 'https://png.pngtree.com/background/20231230/original/pngtree-portrait-of-a-young-man-head-face-person-photo-picture-image_7033552.jpg', '1985-05-15', 'VIGO', 'SPAIN', '12345677A', 'MALE', TRUE, '+34123456789', 'admin', '36400');
 ;`);
 
 		const categories = await dbConnection.query(`

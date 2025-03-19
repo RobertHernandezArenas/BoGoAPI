@@ -52,16 +52,26 @@ class ExperienceController {
 		);
 		try {
 			const { id } = req.query;
-			const [experience] = await dbConnection.query(`
+			const [experience] = await dbConnection.query(
+				`
 				SELECT
 					exp.*,
 					cat.name AS category_name,
 					cat.image AS category_image
-				FROM experience exp
-				INNER JOIN category cat
+				FROM ${CONSTANTS.DATABASE.TABLES.EXPERIENCE} exp
+				INNER JOIN ${CONSTANTS.DATABASE.TABLES.CATEGORY} cat
 				ON exp.category_id = cat.id
-				WHERE exp.id=${id}
-				;`);
+				WHERE exp.id=?
+				;`,
+				[id]
+			);
+
+			const [reviews] = await dbConnection.query(
+				`SELECT * FROM review WHERE experience_id=?;`,
+				[id]
+			);
+
+			experience[0].reviews = reviews;
 
 			res.status(200).json({
 				error: false,
