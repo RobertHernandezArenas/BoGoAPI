@@ -63,8 +63,8 @@ async function createTables(connection) {
                 isFavorite BOOLEAN DEFAULT FALSE,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (category_id) REFERENCES CATEGORY(id) ON DELETE CASCADE,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE
+                FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ EXPERIENCE table created');
@@ -78,8 +78,8 @@ async function createTables(connection) {
                 updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 user_id INT NOT NULL,
                 experience_id INT NOT NULL,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE,
-                FOREIGN KEY (experience_id) REFERENCES EXPERIENCE(id) ON DELETE CASCADE
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+                FOREIGN KEY (experience_id) REFERENCES experience(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ REVIEW table created');
@@ -95,7 +95,7 @@ async function createTables(connection) {
                 checkoutDate TIMESTAMP,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ CART table created');

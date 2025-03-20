@@ -81,6 +81,28 @@ class ExperienceController {
 			res.status(500).json({ error: error.message, data: false });
 		}
 	}
+	async getAllByCategoryId(req, res) {
+		const dbConnection = await getMySQLConnection(
+			CONSTANTS.DATABASE.MYSQL.DB_NAME
+		);
+		try {
+			const { category_id } = req.query;
+			const [experience] = await dbConnection.query(
+				`
+				SELECT *
+				FROM experience exp
+				WHERE exp.category_id = 1;`,
+				[category_id]
+			);
+
+			res.status(200).json({
+				error: false,
+				data: experience
+			});
+		} catch (error) {
+			res.status(500).json({ error: error.message, data: false });
+		}
+	}
 
 	async update(req, res) {
 		try {

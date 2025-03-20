@@ -8,3 +8,5 @@ ExperienceRoutes.get('/create', experienceController.create);
 ExperienceRoutes.get('/list', experienceController.getAll);
 
 ExperienceRoutes.get('/', experienceController.getById);
+
+ExperienceRoutes.get('/by-category', experienceController.getAllByCategoryId);

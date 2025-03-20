@@ -9,6 +9,7 @@ import { PaymentRoutes } from './Payments.Routes.js';
 import { ReviewRoutes } from './Reviews.Routes.js';
 import { swaggerDOC } from '../docs/swagger.js';
 import { UserRoutes } from './User.Routes.js';
+import { EmailRoutes } from './Email.Routes.js';
 
 export const AppRouter = Router();
 
@@ -24,6 +25,7 @@ AppRouter.use('/v1/review', ReviewRoutes);
 
 AppRouter.use('/v1/payment', PaymentRoutes);
 
+AppRouter.use('/v1/email', EmailRoutes);
 
 AppRouter.use('*', (request, response) => {
 	response.status(404).json({
