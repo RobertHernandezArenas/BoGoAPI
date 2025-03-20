@@ -7,11 +7,9 @@ import { CategoryRoutes } from './Category.Routes.js';
 import { ExperienceRoutes } from './Experience.Routes.js';
 import { PaymentRoutes } from './Payments.Routes.js';
 import { swaggerDOC } from '../docs/swagger.js';
-<<<<<<< HEAD
-import { UserRoutes } from './User.Routes.js';
 import { EmailRoutes } from './Email.Routes.js';
-=======
->>>>>>> parent of 1923ee6 (:wrench: finished review + experience endpoints)
+import { UserRoutes } from './User.Routes.js';
+import { ReviewRoutes } from './Reviews.Routes.js';
 
 export const AppRouter = Router();
 
@@ -23,15 +21,14 @@ AppRouter.use('/v1/category', CategoryRoutes);
 
 AppRouter.use('/v1/experience', ExperienceRoutes);
 
-<<<<<<< HEAD
-AppRouter.use('/v1/review', ReviewRoutes);
-
 AppRouter.use('/v1/payment', PaymentRoutes);
 
 AppRouter.use('/v1/email', EmailRoutes);
 
-=======
->>>>>>> parent of 1923ee6 (:wrench: finished review + experience endpoints)
+AppRouter.use('/v1/user', UserRoutes);
+
+AppRouter.use("/v1/review", ReviewRoutes);
+
 AppRouter.use('*', (request, response) => {
 	response.status(404).json({
 		error: {
@@ -43,7 +40,6 @@ AppRouter.use('*', (request, response) => {
 })
 
 	.use((error, request, response, next) => {
-		logger.error(`[Server Error]: ${error.message}`);
 		response.status(500).json({
 			error: 'Internal Server Error',
 			details: 'Something went wrong on the server'

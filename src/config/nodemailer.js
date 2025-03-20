@@ -1,5 +1,4 @@
 import nodemailer from 'nodemailer';
-import { CONSTANTS } from './envs';
 
 // Configura el transporte de correo
 export const transporter = nodemailer.createTransport({
@@ -9,7 +8,7 @@ export const transporter = nodemailer.createTransport({
 	service: 'Gmail',
 	auth: {
 		user: 'airbusjayrobert@gmail.com', // Usuario del correo
-		pass: CONSTANTS.GOOGLE.GOOGLE_APP_NODEMAILER_PASSWORD // Contraseña del correo
+		pass: 'peti ecdo bwzp ryua' // Contraseña del correo
 	}
 });
 

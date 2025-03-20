@@ -1,42 +1,29 @@
 import { CONSTANTS } from '../../config/envs.js';
 import { getMySQLConnection } from '../../config/database/mysql/index.js';
 
-export class CategoryController {
+class ReviewController {
 	async create(req, res) {
 		const dbConnection = await getMySQLConnection(
 			CONSTANTS.DATABASE.MYSQL.DB_NAME
 		);
-
-		/* await dbConnection.query(`
-			INSERT INTO user(
-				email,
-				name,
-				surname,
-				avatar,
-				birthdate,
-				city,
-				country,
-				phone,
-				)
-			VALUES(?,?,?,?,?,?,?,?)
-			`);
-		*/
-
 		try {
-			const { name, image } = req.body;
+			const { rating, comment, user_id } = req.body;
+			const { experience_id } = req.query;
 			await dbConnection.query(
 				`
-			INSERT INTO ${CONSTANTS.DATABASE.TABLES.CATEGORY}(
-				name,
-				image
-				)
-			VALUES(?, ?)
-			;`,
-				[name, image]
+ 			INSERT INTO ${CONSTANTS.DATABASE.TABLES.REVIEW}(
+ 				rating,
+ 				comment,
+ 				user_id,
+ 				experience_id
+ 				)
+ 			VALUES(?, ?, ?, ?)
+ 			;`,
+				[rating, comment, user_id, experience_id]
 			);
 			res.status(201).json({
 				error: false,
-				data: { message: 'Category was created' }
+				data: { message: 'Review was created' }
 			});
 		} catch (error) {
 			res.status(500).json({ error: error.message });
@@ -51,35 +38,7 @@ export class CategoryController {
 		);
 		try {
 			const [categories] = await dbConnection.query(`
-				SELECT * FROM ${CONSTANTS.DATABASE.TABLES.CATEGORY};`);
-
-			res.status(200).json({
-				error: false,
-				data: categories
-			});
-		} catch (error) {
-			res.status(500).json({
-				error: error.message,
-				data: false
-			});
-		} finally {
-			dbConnection.release();
-		}
-	}
-	async getAvailableCategoriesByExperience(req, res) {
-		const dbConnection = await getMySQLConnection(
-			CONSTANTS.DATABASE.MYSQL.DB_NAME
-		);
-		try {
-			const [categories] = await dbConnection.query(`
-				SELECT DISTINCT
-					cat.id AS category_id,
-    				cat.name AS category_name,
-    				cat.image AS category_image
-				FROM experience exp
-				INNER JOIN category cat
-				ON exp.category_id = cat.id
-				;`);
+ 				SELECT * FROM ${CONSTANTS.DATABASE.TABLES.REVIEW};`);
 
 			res.status(200).json({
 				error: false,
@@ -101,9 +60,9 @@ export class CategoryController {
 		);
 		try {
 			const { id } = req.query;
-			console.log({ id });
+
 			const [category] = await dbConnection.query(
-				`SELECT * FROM ${CONSTANTS.DATABASE.TABLES.CATEGORY} WHERE id = ?;`,
+				`SELECT * FROM ${CONSTANTS.DATABASE.TABLES.REVIEW} WHERE id = ?;`,
 				[id]
 			);
 
@@ -135,10 +94,10 @@ export class CategoryController {
 			const { id } = req.query;
 			const category = await dbConnection.query(
 				`
-				UPDATE ${CONSTANTS.DATABASE.TABLES.CATEGORY}
-				SET name = ?, image = ?
-				WHERE id = ?
-				;`,
+ 				UPDATE ${CONSTANTS.DATABASE.TABLES.REVIEW}
+ 				SET name = ?, image = ?
+ 				WHERE id = ?
+ 				;`,
 				[name, image, id]
 			);
 			res.status(200).json({
@@ -160,9 +119,9 @@ export class CategoryController {
 			const { id } = req.params;
 			await dbConnection.query(
 				`
-				DELETE FROM ${CONSTANTS.DATABASE.TABLES.CATEGORY}
-				WHERE id = ?
-				;`,
+ 				DELETE FROM ${CONSTANTS.DATABASE.TABLES.REVIEW}
+ 				WHERE id = ?
+ 				;`,
 				[id]
 			);
 			res.status(204).send();
@@ -174,4 +133,4 @@ export class CategoryController {
 	}
 }
 
-export const categoryController = new CategoryController();
+export const reviewController = new ReviewController();

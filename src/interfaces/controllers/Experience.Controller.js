@@ -4,13 +4,73 @@ import { CONSTANTS } from '../../config/envs.js';
 
 class ExperienceController {
 	async create(req, res, next) {
+		const dbConnection = await getMySQLConnection(
+			CONSTANTS.DATABASE.MYSQL.DB_NAME
+		);
 		try {
-			const experienceDTO = new ExperienceDTO(req.body);
-			const experience =
-				await experienceService.createExperience(experienceDTO);
+			const {
+				name,
+				description,
+				price,
+				duration,
+				dateTo,
+				dateFrom,
+				location,
+				capacity,
+				stock,
+				availability,
+				category_id,
+				image
+			} = req.body;
+
+			const [_id] = await dbConnection.query(
+				`
+				SELECT
+					*
+				FROM ${CONSTANTS.DATABASE.TABLES.EXPERIENCE};`
+			);
+
+			dbConnection.query(
+				`INSERT INTO experience(
+					id,
+					name,
+					description,
+					price,
+					duration,
+					dateTo,
+					dateFrom,
+					location,
+					capacity,
+					stock,
+					availability,
+					user_id,
+					category_id,
+					image
+				)
+				VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?);
+				`,
+				[
+					_id.length + 1,
+					name,
+					description,
+					price,
+					duration,
+					new Date(dateTo),
+					new Date(dateFrom),
+					location,
+					capacity,
+					stock,
+					availability,
+					1,
+					category_id,
+					image
+				]
+			);
+
+			console.log(_id.length + 1);
 			res.status(201).json({
 				error: false,
-				data: experience
+				data: { message: 'Experience was created' }
 			});
 		} catch (error) {
 			next(error);
@@ -52,16 +112,26 @@ class ExperienceController {
 		);
 		try {
 			const { id } = req.query;
-			const [experience] = await dbConnection.query(`
-				SELECT
-					exp.*,
-					cat.name AS category_name,
-					cat.image AS category_image
-				FROM experience exp
-				INNER JOIN category cat
+			const [experience] = await dbConnection.query(
+				`
+ 				SELECT
+ 					exp.*,
+ 					cat.name AS category_name,
+ 					cat.image AS category_image
+ 				FROM ${CONSTANTS.DATABASE.TABLES.EXPERIENCE} exp
+ 				INNER JOIN ${CONSTANTS.DATABASE.TABLES.CATEGORY} cat
 				ON exp.category_id = cat.id
-				WHERE exp.id=${id}
-				;`);
+				WHERE exp.id=?
+ 				;`,
+				[id]
+			);
+
+			const [reviews] = await dbConnection.query(
+				`SELECT * FROM review WHERE experience_id=?;`,
+				[id]
+			);
+
+			experience[0].reviews = reviews;
 
 			res.status(200).json({
 				error: false,
