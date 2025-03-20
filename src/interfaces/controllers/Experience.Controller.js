@@ -52,26 +52,38 @@ class ExperienceController {
 		);
 		try {
 			const { id } = req.query;
-			const [experience] = await dbConnection.query(
-				`
+			const [experience] = await dbConnection.query(`
 				SELECT
 					exp.*,
 					cat.name AS category_name,
 					cat.image AS category_image
-				FROM ${CONSTANTS.DATABASE.TABLES.EXPERIENCE} exp
-				INNER JOIN ${CONSTANTS.DATABASE.TABLES.CATEGORY} cat
+				FROM experience exp
+				INNER JOIN category cat
 				ON exp.category_id = cat.id
-				WHERE exp.id=?
-				;`,
-				[id]
-			);
+				WHERE exp.id=${id}
+				;`);
 
-			const [reviews] = await dbConnection.query(
-				`SELECT * FROM review WHERE experience_id=?;`,
-				[id]
+			res.status(200).json({
+				error: false,
+				data: experience
+			});
+		} catch (error) {
+			res.status(500).json({ error: error.message, data: false });
+		}
+	}
+	async getAllByCategoryId(req, res) {
+		const dbConnection = await getMySQLConnection(
+			CONSTANTS.DATABASE.MYSQL.DB_NAME
+		);
+		try {
+			const { category_id } = req.query;
+			const [experience] = await dbConnection.query(
+				`
+				SELECT *
+				FROM experience exp
+				WHERE exp.category_id = 1;`,
+				[category_id]
 			);
-
-			experience[0].reviews = reviews;
 
 			res.status(200).json({
 				error: false,

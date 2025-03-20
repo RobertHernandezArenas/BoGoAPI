@@ -11,7 +11,6 @@ async function createTables(connection) {
             CREATE TABLE IF NOT EXISTS user (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 email VARCHAR(255) NOT NULL UNIQUE,
-				password VARCHAR(255) NOT NULL,
                 name VARCHAR(255) NOT NULL,
                 surname VARCHAR(255),
                 address TEXT,
@@ -63,8 +62,8 @@ async function createTables(connection) {
                 isFavorite BOOLEAN DEFAULT FALSE,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (category_id) REFERENCES CATEGORY(id) ON DELETE CASCADE,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE
+                FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE,
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ EXPERIENCE table created');
@@ -78,8 +77,8 @@ async function createTables(connection) {
                 updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
                 user_id INT NOT NULL,
                 experience_id INT NOT NULL,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE,
-                FOREIGN KEY (experience_id) REFERENCES EXPERIENCE(id) ON DELETE CASCADE
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE,
+                FOREIGN KEY (experience_id) REFERENCES experience(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ REVIEW table created');
@@ -95,7 +94,7 @@ async function createTables(connection) {
                 checkoutDate TIMESTAMP,
                 createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updateAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                FOREIGN KEY (user_id) REFERENCES USER(id) ON DELETE CASCADE
+                FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
             );
         `);
 		console.log('✅ CART table created');
@@ -205,18 +204,10 @@ async function main() {
 		await dbConnection.query('DROP TABLE IF EXISTS reviews');
 		console.log('🔥 reviews table dropped');
       */
-		// ------------------- USERS
-		await dbConnection.query(`
-			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
-(1, 'admin@example.com', 123456, 'Admin', 'User', '123 Admin Street', 'https://randomuser.me/api/portraits/men/75.jpg', '1985-05-15', 'Madrid', 'Spain', '12345678A', 'male', TRUE, '+34123456789', 'admin', '28001');
-;`);
-		await dbConnection.query(`
-			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
-(2, 'ana@example.com', 123456, 'Ana', 'Caballero', '123 Admin Street', 'https://t4.ftcdn.net/jpg/03/83/25/83/360_F_383258331_D8imaEMl8Q3lf7EKU2Pi78Cn0R7KkW9o.jpg', '1985-05-15', 'VIGO', 'SPAIN', '12345688A', 'FEMALE', TRUE, '+34123456789', 'admin', '36400');
-;`);
-		await dbConnection.query(`
-			INSERT INTO user (id, email, password, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
-(3, 'julian@example.com', 123456, 'Julian', 'Regueira', '123 Admin Street', 'https://png.pngtree.com/background/20231230/original/pngtree-portrait-of-a-young-man-head-face-person-photo-picture-image_7033552.jpg', '1985-05-15', 'VIGO', 'SPAIN', '12345677A', 'MALE', TRUE, '+34123456789', 'admin', '36400');
+
+		const users = await dbConnection.query(`
+			INSERT INTO user (id, email, name, surname, address, avatar, birthdate, city, country, dni, gender, isActive, phone, role, zipcode) VALUES
+(1, 'admin@example.com', 'Admin', 'User', '123 Admin Street', 'https://randomuser.me/api/portraits/men/75.jpg', '1985-05-15', 'Madrid', 'Spain', '12345678A', 'male', TRUE, '+34123456789', 'admin', '28001');
 ;`);
 
 		const categories = await dbConnection.query(`
