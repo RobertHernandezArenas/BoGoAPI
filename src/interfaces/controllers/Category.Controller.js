@@ -1,3 +1,4 @@
+import { CategoryDTO } from '../../domain/dtos/CategoryDTO.js';
 import { CONSTANTS } from '../../config/envs.js';
 import { getMySQLConnection } from '../../config/database/mysql/index.js';
 
@@ -6,6 +7,22 @@ export class CategoryController {
 		const dbConnection = await getMySQLConnection(
 			CONSTANTS.DATABASE.MYSQL.DB_NAME
 		);
+
+		/* await dbConnection.query(`
+			INSERT INTO user(
+				email,
+				name,
+				surname,
+				avatar,
+				birthdate,
+				city,
+				country,
+				phone,
+				)
+			VALUES(?,?,?,?,?,?,?,?)
+			`);
+		*/
+
 		try {
 			const { name, image } = req.body;
 			await dbConnection.query(

@@ -1,121 +1,50 @@
-import { getMySQLConnection } from '../../config/database/mysql/index.js';
-import { CONSTANTS } from '../../config/envs.js';
-import { encrypt } from './../../utils/plugins/bcrypt.js';
+const UserDTO = require('../../domain/dtos/UserDTO');
+const UserService = require('../../domain/services/UserService');
+const UserRepositoryImpl = require('../../infrastructure/repositories/UserRepositoryImpl');
+
+const userRepository = new UserRepositoryImpl();
+const userService = new UserService(userRepository);
 
 class UserController {
 	async create(req, res) {
-		const dbConnection = await getMySQLConnection(
-			CONSTANTS.DATABASE.MYSQL.DB_NAME
-		);
 		try {
-			const {
-				email,
-				password,
-				name,
-				surname,
-				avatar,
-				birthdate,
-				city,
-				country,
-				phone
-			} = req.body;
-			await dbConnection.query(
-				`
-				INSERT INTO user(
-					email,
-					password,
-					name,
-					surname,
-					avatar,
-					birthdate,
-					city,
-					country,
-					phone)
-				VALUES(?,?,?,?,?,?,?,?,?);
-				`,
-				[
-					email,
-					encrypt(password, 10),
-					name,
-					surname,
-					avatar,
-					new Date(birthdate),
-					city,
-					country,
-					phone
-				]
-			);
-			res.status(201).json();
+			const userDTO = new UserDTO(req.body);
+			const user = await userService.createUser(userDTO);
+			res.status(201).json(user);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
-		} finally {
-			dbConnection.release();
-		}
-	}
-
-	async getAll(req, res) {
-		const dbConnection = await getMySQLConnection(
-			CONSTANTS.DATABASE.MYSQL.DB_NAME
-		);
-		try {
-			const [users] = await dbConnection.query(
-				`SELECT * FROM ${CONSTANTS.DATABASE.TABLES.USER}`
-			);
-			res.status(200).json({ error: false, data: users });
-		} catch (error) {
-			res.status(500).json({ error: error.message });
-		} finally {
-			dbConnection.release();
 		}
 	}
 
 	async getById(req, res) {
-		const dbConnection = await getMySQLConnection(
-			CONSTANTS.DATABASE.MYSQL.DB_NAME
-		);
 		try {
-			const { id } = req.query;
-			const [user] = await dbConnection.query(
-				`SELECT * FROM ${CONSTANTS.DATABASE.TABLES.USER} WHERE id = ?`,
-				[id]
-			);
-			res.status(200).json({
-				error: false,
-				data: user
-			});
+			const user = await userService.getUserById(req.params.id);
+			if (!user) return res.status(404).json({ error: 'User not found' });
+			const userDTO = new UserDTO(user);
+			res.status(200).json(userDTO);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
-		} finally {
-			dbConnection.release();
 		}
 	}
 
 	async update(req, res) {
 		try {
-			
-			res.status(200).json({
-				error: false,
-				data: {message: 'falta implementar'}
-			});
+			const userDTO = new UserDTO(req.body);
+			const user = await userService.updateUser(req.params.id, userDTO);
+			res.status(200).json(user);
 		} catch (error) {
 			res.status(500).json({ error: error.message });
-		} finally {
-			dbConnection.release();
 		}
 	}
 
 	async delete(req, res) {
 		try {
-			res.status(204).json({
-				error: false,
-				data: { message: 'falta implementar' }
-			});
+			await userService.deleteUser(req.params.id);
+			res.status(204).send();
 		} catch (error) {
 			res.status(500).json({ error: error.message });
-		} finally {
-			dbConnection.release();
 		}
 	}
 }
 
-export const userController = new UserController();
+module.exports = new UserController();
