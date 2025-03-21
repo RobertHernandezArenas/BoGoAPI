@@ -151,7 +151,7 @@ class ExperienceController {
 				`
 				SELECT *
 				FROM experience exp
-				WHERE exp.category_id = 1;`,
+				WHERE exp.category_id = ?;`,
 				[category_id]
 			);
 
